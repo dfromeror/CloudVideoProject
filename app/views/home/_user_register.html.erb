@@ -1,0 +1,41 @@
+<div class="modal fade" id="userRegisterForm" tabindex="-1" role="dialog" aria-labelledby="userRegisterForm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">User Registration</h4>
+      </div>
+      <div class="modal-body">
+
+        <%= form_for :user, url: '/users', html: { class: 'form-horizontal' } do %>
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Write your Fist Name" name="user[first_name]">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Write your Last Name" name="user[last_name]">
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail:</label>
+          <input type="text" class="form-control" id="email" placeholder="Write your E-Mail" name="user[email]">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Write your Password" name="user[password]">
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your Password">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        <% end %>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
