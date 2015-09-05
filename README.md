@@ -1,0 +1,2 @@
+# CloudVideoProject
+Video Contests Platform
