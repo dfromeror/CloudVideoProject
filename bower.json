@@ -1,0 +1,21 @@
+{
+  "name": "videos01",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sriox/CloudVideoProject",
+  "authors": [
+    "Rios",
+    "Sergio [JANCO] <srios6@its.jnj.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5"
+  }
+}

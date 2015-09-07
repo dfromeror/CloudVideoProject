@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  resources :contests
+
+  get 'contest/index'
+
+  get 'contest/new'
+
   resources :users
+  resources :clients
+
 
   #get 'home/index'
 
@@ -8,6 +16,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  post '/login' => 'users#login'
+  get '/logout' => 'users#logout'
+  get '/contest/form' => 'contest#form'
+  post '/contest/create' => 'contest#create'
 
 
   # Example of regular route:

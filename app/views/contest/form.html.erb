@@ -1,0 +1,43 @@
+<h1>Create a new Contest</h1>
+<div class="row" ng-controller="NewContestController">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_for :contest, url: '/contest/create', html: { class: 'form-horizontal' } do %>
+        <input type="hidden" name="contest[user_id]" value="<%=	 user_logged_id %>">
+        <div class="form-group">
+          <label for="name">Contest Name:</label>
+          <input type="text" class="form-control" id="name" name="contest[name]" ng-model="contest.name" required />
+        </div>
+        <div class="form-group">
+          <label for="media">Media URL:</label>
+          <input type="text" class="form-control" id="media" name="contest[media]" ng-model="contest.media" required />
+        </div>
+        <div class="form-group">
+          <label for="url">Landing Page URL:</label>
+          <input type="text" class="form-control" id="url" name="contest[url]" ng-model="contest.url" required />
+        </div>
+        <div class="form-group">
+          <label for="url">Start Date:</label>
+          <input type="text" class="form-control" id="startDate" name="contest[start_date]" ng-model="contest.startDate" required />
+        </div>
+        <div class="form-group">
+          <label for="url">End Date:</label>
+          <input type="text" class="form-control" id="endDate" name="contest[end_date]" ng-model="contest.endDate" required />
+        </div>
+        <div class="form-group">
+          <label for="url">Award Description:</label>
+          <textarea name="contest[award_description]" id="awardDescription" cols="30" rows="5" class="form-control" required></textarea>
+        </div>
+        <div class="row">
+          <div class="col-md-1 col-md-offset-10">
+            <button type="clear" class="btn btn-default">Clear</button>
+          </div>
+          <div class="col-md-1">
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+<br />
+<br />
+<br />

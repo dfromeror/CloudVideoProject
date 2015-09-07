@@ -1,4 +1,4 @@
-<div class="modal fade" id="userRegisterForm" tabindex="-1" role="dialog" aria-labelledby="userRegisterForm">
+<div class="modal fade" id="userRegisterForm" tabindex="-1" role="dialog" aria-labelledby="userRegisterForm" ng-controller="RegisterController">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,32 +7,47 @@
       </div>
       <div class="modal-body">
 
-        <%= form_for :user, url: '/users', html: { class: 'form-horizontal' } do %>
-        <div class="form-group">
-          <label for="firstName">First Name:</label>
-          <input type="text" class="form-control" id="firstName" placeholder="Write your Fist Name" name="user[first_name]">
+
+        <div class="container-fluid">
+          <%= form_for :user, url: '/users', html: { class: 'form-horizontal' } do %>
+          <div class="form-group">
+            <label for="client">Company</label>
+            <select name="user[client_id]" id="client" class="form-control" ng-model="clientId" required>
+              <option value="">[Select]</option>
+              <% @clients.each do |client| %>
+              <option value="<%= client.id %>"><%= client.name %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Write your Fist Name" name="user[first_name]" ng-model="user.firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Write your Last Name" name="user[last_name]" ng-model="user.lastName" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail:</label>
+            <input type="email" class="form-control" id="email" placeholder="Write your E-Mail" name="user[email]" ng-model="user.email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Write your Password" name="user[password]" ng-model="user.password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your Password" ng-model="confirmPassword" required>
+          </div>
+          <div ng-show="!!user.password && (user.password !== confirmPassword)">
+            <span class="text-danger">Password does not match!!!</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="complete">Register</button>
+          </div>
+          <% end %>
         </div>
-        <div class="form-group">
-          <label for="lastName">Last Name:</label>
-          <input type="text" class="form-control" id="lastName" placeholder="Write your Last Name" name="user[last_name]">
-        </div>
-        <div class="form-group">
-          <label for="email">E-Mail:</label>
-          <input type="text" class="form-control" id="email" placeholder="Write your E-Mail" name="user[email]">
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" class="form-control" id="password" placeholder="Write your Password" name="user[password]">
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password:</label>
-          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your Password">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Register</button>
-        </div>
-        <% end %>
 
       </div>
       
