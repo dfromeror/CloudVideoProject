@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/jquery-ui
+//= require bootstrap
 //= require turbolinks
 //= require angular/angular
 //= require app

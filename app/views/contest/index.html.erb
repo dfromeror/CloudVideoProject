@@ -1,2 +1,31 @@
-<h1>Contest#index</h1>
-<p>Find me in app/views/contest/index.html.erb</p>
+<h1>Available Contests</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Created</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <% if is_user_logged %>
+    <th colspan="3">Actions</th>
+        <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% @contests.each do |contest| %>
+      <tr>
+        <td><%= contest.name %></td>
+        <td><%= contest.description %></td>
+        <td><%= time_ago_in_words contest.created_at %></td>
+        <td><%= contest.start_date %></td>
+        <td><%= contest.end_date %></td>
+        <% if is_user_logged %>
+        <td><button type="button" class="btn btn-primary" ng-click="editContest('<%= contest.id %>')"><i class="glyphicon glyphicon-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
+        <td><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-link"></i></button></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,12 @@
 class ContestController < ApplicationController
   def index
+    if session[:user_logged_id] != nil
+      user_id = session[:user_logged_id]
+      @contests = Contest.where(:user_id => user_id).order(created_at: :desc);
+    else
+      @contests = Contest.order(created_at: :desc).all;
+    end
+
   end
 
   def form
@@ -16,4 +23,5 @@ class ContestController < ApplicationController
   def contest_parameters
     params.require(:contest).permit(:name, :description, :media, :url, :start_date, :end_date, :award_description)
   end
+
 end

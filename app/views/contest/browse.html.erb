@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Created</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @contest.each do |contest| %>
+  <tr>
+    <td><%= contest.name %></td>
+    <td><%= contest.description %></td>
+    <td><%= contest.created_at %></td>
+    <td><%= contest.start_date %></td>
+    <td><%= contest.end_date %></td>
+  </tr>
+      <% end %>
+  </tbody>
+</table>
