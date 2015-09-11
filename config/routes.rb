@@ -19,8 +19,10 @@ Rails.application.routes.draw do
 
   post '/login' => 'users#login'
   get '/logout' => 'users#logout'
-  get '/contest/form' => 'contest#form'
+  get '/contest/new' => 'contest#new'
   post '/contest/create' => 'contest#create'
+  get '/contest/browse' => 'contest#browse'
+  get '/contest/index' => 'contest#index'
 
 
   # Example of regular route:

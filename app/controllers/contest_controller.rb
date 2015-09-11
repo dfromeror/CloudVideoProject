@@ -9,7 +9,11 @@ class ContestController < ApplicationController
 
   end
 
-  def form
+  def browse
+    @contests = Contest.order(created_at: :desc).all
+  end
+
+  def new
   end
 
   def create
@@ -18,10 +22,18 @@ class ContestController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    
+  end
+
   private
 
   def contest_parameters
     params.require(:contest).permit(:name, :description, :media, :url, :start_date, :end_date, :award_description)
+  end
+
+  def show(id)
+    @contest = Contest.find(id)
   end
 
 end

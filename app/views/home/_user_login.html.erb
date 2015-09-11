@@ -8,12 +8,12 @@
       <div class="modal-body">
       
         <div class="container-fluid">
-          <%= form_for :user, url: '/login', html: { class: 'form-horizontal' } do %>
+          <%= form_for :user, url: '/login', html: { class: 'new-horizontal' } do %>
           <div class="form-group">
             <label for="client">Company</label>
             <select name="user[client_id]" id="client" class="form-control" ng-model="user.clientId" required>
               <option value="">[Select]</option>
-              <% @clients.each do |client| %>
+              <% all_clients.each do |client| %>
               <option value="<%= client.id %>"><%= client.name %></option>
               <% end %>
             </select>

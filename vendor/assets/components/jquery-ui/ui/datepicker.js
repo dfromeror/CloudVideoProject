@@ -608,7 +608,7 @@ $.extend(Datepicker.prototype, {
 							$.datepicker._hideDatepicker();
 						}
 
-						return false; // don't submit the form
+						return false; // don't submit the new
 				case 27: $.datepicker._hideDatepicker();
 						break; // hide on escape
 				case 33: $.datepicker._adjustDate(event.target, (event.ctrlKey ?

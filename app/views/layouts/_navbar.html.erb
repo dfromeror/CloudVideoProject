@@ -9,8 +9,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
-        <% if is_user_logged %> <li><a href="/contest/form">Create Contest</a></li> <% end %>
-        <li><a href="/contest/index">Browse Contests</a></li>
+        <% if is_user_logged %>
+            <li><%= link_to 'New Contest', new_contest_path  %></li>
+            <li><a href="/contests/index">My Contests</a></li>
+        <% end %>
+        <li><a href="/contests/browse">Browse Contests</a></li>
         <li><a href="#">About Us</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -9,12 +9,12 @@
 
 
         <div class="container-fluid">
-          <%= form_for :user, url: '/users', html: { class: 'form-horizontal' } do %>
+          <%= form_for :user, url: '/users', html: { class: 'new-horizontal' } do %>
           <div class="form-group">
             <label for="client">Company</label>
             <select name="user[client_id]" id="client" class="form-control" ng-model="clientId" required>
               <option value="">[Select]</option>
-              <% @clients.each do |client| %>
+              <% all_clients.each do |client| %>
               <option value="<%= client.id %>"><%= client.name %></option>
               <% end %>
             </select>

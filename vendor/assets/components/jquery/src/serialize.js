@@ -40,7 +40,7 @@ function buildParams( prefix, obj, traditional, add ) {
 	}
 }
 
-// Serialize an array of form elements or a set of
+// Serialize an array of new elements or a set of
 // key/values into a query string
 jQuery.param = function( a, traditional ) {
 	var prefix,
@@ -56,9 +56,9 @@ jQuery.param = function( a, traditional ) {
 		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
 	}
 
-	// If an array was passed in, assume that it is an array of form elements.
+	// If an array was passed in, assume that it is an array of new elements.
 	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
-		// Serialize the form elements
+		// Serialize the new elements
 		jQuery.each( a, function() {
 			add( this.name, this.value );
 		});
@@ -81,7 +81,7 @@ jQuery.fn.extend({
 	},
 	serializeArray: function() {
 		return this.map(function() {
-			// Can add propHook for "elements" to filter or add form elements
+			// Can add propHook for "elements" to filter or add new elements
 			var elements = jQuery.prop( this, "elements" );
 			return elements ? jQuery.makeArray( elements ) : this;
 		})

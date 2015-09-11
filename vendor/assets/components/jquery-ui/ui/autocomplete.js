@@ -136,7 +136,7 @@ $.widget( "ui.autocomplete", {
 						this.close( event );
 						// Different browsers have different default behavior for escape
 						// Single press can mean undo or clear
-						// Double press in IE means clear the whole form
+						// Double press in IE means clear the whole new
 						event.preventDefault();
 					}
 					break;

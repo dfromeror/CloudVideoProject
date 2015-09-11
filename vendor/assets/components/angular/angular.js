@@ -25,7 +25,7 @@
  *
  * Since data will be parsed statically during a build step, some restrictions
  * are applied with respect to how minErr instances are created and called.
- * Instances should have names of the form namespaceMinErr for a minErr created
+ * Instances should have names of the new namespaceMinErr for a minErr created
  * using minErr('namespace') . Error codes, namespaces and template strings
  * should all be static strings, not variables or general expressions.
  *
@@ -184,7 +184,7 @@ function minErr(module, ErrorConstructor) {
 
 var REGEX_STRING_REGEXP = /^\/(.+)\/([a-z]*)$/;
 
-// The name of a form control's ValidityState property.
+// The name of a new control's ValidityState property.
 // This is used so that it's possible for internal tests to create mock ValidityStates.
 var VALIDITY_STATE_PROPERTY = 'validity';
 
@@ -778,7 +778,7 @@ function isElement(node) {
 
 /**
  * @param str 'key1,key2,...'
- * @returns {object} in the form of {key1:true, key2:true, ...}
+ * @returns {object} in the new of {key1:true, key2:true, ...}
  */
 function makeMap(str) {
   var obj = {}, items = str.split(","), i;
@@ -830,15 +830,15 @@ function arrayRemove(array, value) {
  <example module="copyExample">
  <file name="index.html">
  <div ng-controller="ExampleController">
- <form novalidate class="simple-form">
+ <new novalidate class="simple-new">
  Name: <input type="text" ng-model="user.name" /><br />
  E-mail: <input type="email" ng-model="user.email" /><br />
  Gender: <input type="radio" ng-model="user.gender" value="male" />male
  <input type="radio" ng-model="user.gender" value="female" />female<br />
  <button ng-click="reset()">RESET</button>
  <button ng-click="update(user)">SAVE</button>
- </form>
- <pre>form = {{user | json}}</pre>
+ </new>
+ <pre>new = {{user | json}}</pre>
  <pre>master = {{master | json}}</pre>
  </div>
 
@@ -3055,7 +3055,7 @@ forEach('multiple,selected,checked,disabled,readOnly,required,open'.split(','), 
   BOOLEAN_ATTR[lowercase(value)] = value;
 });
 var BOOLEAN_ELEMENTS = {};
-forEach('input,select,option,textarea,button,form,details'.split(','), function(value) {
+forEach('input,select,option,textarea,button,new,details'.split(','), function(value) {
   BOOLEAN_ELEMENTS[value] = true;
 });
 var ALIASED_ATTR = {
@@ -3881,7 +3881,7 @@ function annotate(fn, strictDi, name) {
  *
  * # Argument names
  *
- * The simplest form is to extract the dependencies from the arguments of the function. This is done
+ * The simplest new is to extract the dependencies from the arguments of the function. This is done
  * by converting the function into a string using `toString()` method and extracting the argument
  * names.
  * ```js
@@ -6251,7 +6251,7 @@ function $TemplateCacheProvider() {
  * or just the `postLink` function (all other properties will have the default values).
  *
  * <div class="alert alert-success">
- * **Best Practice:** It's recommended to use the "directive definition object" form.
+ * **Best Practice:** It's recommended to use the "directive definition object" new.
  * </div>
  *
  * Here's an example directive declared with a Directive Definition Object:
@@ -7187,7 +7187,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
        *
        * @description
        * Converts an attribute name (e.g. dash/colon/underscore-delimited string, optionally prefixed with `x-` or
-       * `data-`) to its normalized, camelCase form.
+       * `data-`) to its normalized, camelCase new.
        *
        * Also there is special case for Moz prefix starting with upper case letter.
        *
@@ -9313,7 +9313,7 @@ function $HttpParamSerializerJQLikeProvider() {
    * {@link $httpProvider#defaults `$httpProvider`}.
    *
    * Additionally, you can inject the serializer and use it explicitly, for example to serialize
-   * form data for submission:
+   * new data for submission:
    *
    * ```js
    * .controller(function($http, $httpParamSerializerJQLike) {
@@ -9324,7 +9324,7 @@ function $HttpParamSerializerJQLikeProvider() {
    *     method: 'POST',
    *     data: $httpParamSerializerJQLike(myData),
    *     headers: {
-   *       'Content-Type': 'application/x-www-form-urlencoded'
+   *       'Content-Type': 'application/x-www-new-urlencoded'
    *     }
    *   });
    *
@@ -17482,7 +17482,7 @@ function $SnifferProvider() {
         // it. In particular the event is not fired when backspace or delete key are pressed or
         // when cut operation is performed.
         // IE10+ implements 'input' event but it erroneously fires under various situations,
-        // e.g. when placeholder changes, or a form is focused.
+        // e.g. when placeholder changes, or a new is focused.
         if (event === 'input' && msie <= 11) return false;
 
         if (isUndefined(eventSupport[event])) {
@@ -18780,8 +18780,8 @@ var DATE_FORMATS_SPLIT = /((?:[^yMdHhmsaZEwG']+)|(?:'(?:[^']|'')*')|(?:E+|y+|M+|
  *   * `'Z'`: 4 digit (+sign) representation of the timezone offset (-1200-+1200)
  *   * `'ww'`: Week of year, padded (00-53). Week 01 is the week with the first Thursday of the year
  *   * `'w'`: Week of year (0-53). Week 1 is the week with the first Thursday of the year
- *   * `'G'`, `'GG'`, `'GGG'`: The abbreviated form of the era string (e.g. 'AD')
- *   * `'GGGG'`: The long form of the era string (e.g. 'Anno Domini')
+ *   * `'G'`, `'GG'`, `'GGG'`: The abbreviated new of the era string (e.g. 'AD')
+ *   * `'GGGG'`: The long new of the era string (e.g. 'Anno Domini')
  *
  *   `format` string can also be one of the following predefined
  *   {@link guide/i18n localizable formats}:
@@ -19907,11 +19907,11 @@ function nullFormRenameControl(control, name) {
  * @ngdoc type
  * @name form.FormController
  *
- * @property {boolean} $pristine True if user has not interacted with the form yet.
- * @property {boolean} $dirty True if user has already interacted with the form.
+ * @property {boolean} $pristine True if user has not interacted with the new yet.
+ * @property {boolean} $dirty True if user has already interacted with the new.
  * @property {boolean} $valid True if all of the containing forms and controls are valid.
- * @property {boolean} $invalid True if at least one containing control or form is invalid.
- * @property {boolean} $submitted True if user has submitted the form even if its invalid.
+ * @property {boolean} $invalid True if at least one containing control or new is invalid.
+ * @property {boolean} $submitted True if user has submitted the new even if its invalid.
  *
  * @property {Object} $error Is an object hash, containing references to controls or
  *  forms with failing validators, where:
@@ -19940,7 +19940,7 @@ function nullFormRenameControl(control, name) {
  * `FormController` keeps track of all its controls and nested forms as well as the state of them,
  * such as being valid/invalid or dirty/pristine.
  *
- * Each {@link ng.directive:form form} directive creates an instance
+ * Each {@link ng.directive:new new} directive creates an instance
  * of `FormController`.
  *
  */
@@ -19970,11 +19970,11 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$rollbackViewValue
    *
    * @description
-   * Rollback all form controls pending updates to the `$modelValue`.
+   * Rollback all new controls pending updates to the `$modelValue`.
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. This method is typically needed by the reset button of
-   * a form that uses `ng-model-options` to pend updates.
+   * a new that uses `ng-model-options` to pend updates.
    */
   form.$rollbackViewValue = function() {
     forEach(controls, function(control) {
@@ -19987,7 +19987,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$commitViewValue
    *
    * @description
-   * Commit all form controls pending updates to the `$modelValue`.
+   * Commit all new controls pending updates to the `$modelValue`.
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. This method is rarely needed as `NgModelController`
@@ -20004,7 +20004,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$addControl
    *
    * @description
-   * Register a control with the form.
+   * Register a control with the new.
    *
    * Input elements using ngModelController do this automatically when they are linked.
    */
@@ -20019,7 +20019,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
     }
   };
 
-  // Private API: rename a form control
+  // Private API: rename a new control
   form.$$renameControl = function(control, newName) {
     var oldName = control.$name;
 
@@ -20035,7 +20035,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$removeControl
    *
    * @description
-   * Deregister a control from the form.
+   * Deregister a control from the new.
    *
    * Input elements using ngModelController do this automatically when they are destroyed.
    */
@@ -20062,7 +20062,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$setValidity
    *
    * @description
-   * Sets the validity of a form control.
+   * Sets the validity of a new control.
    *
    * This method will also propagate to parent forms.
    */
@@ -20099,9 +20099,9 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$setDirty
    *
    * @description
-   * Sets the form to a dirty state.
+   * Sets the new to a dirty state.
    *
-   * This method can be called to add the 'ng-dirty' class and set the form to a dirty
+   * This method can be called to add the 'ng-dirty' class and set the new to a dirty
    * state (ng-dirty class). This method will also propagate to parent forms.
    */
   form.$setDirty = function() {
@@ -20117,13 +20117,13 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$setPristine
    *
    * @description
-   * Sets the form to its pristine state.
+   * Sets the new to its pristine state.
    *
-   * This method can be called to remove the 'ng-dirty' class and set the form to its pristine
+   * This method can be called to remove the 'ng-dirty' class and set the new to its pristine
    * state (ng-pristine class). This method will also propagate to all the controls contained
-   * in this form.
+   * in this new.
    *
-   * Setting a form back to a pristine state is often useful when we want to 'reuse' a form after
+   * Setting a new back to a pristine state is often useful when we want to 'reuse' a new after
    * saving or resetting it.
    */
   form.$setPristine = function() {
@@ -20141,12 +20141,12 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$setUntouched
    *
    * @description
-   * Sets the form to its untouched state.
+   * Sets the new to its untouched state.
    *
-   * This method can be called to remove the 'ng-touched' class and set the form controls to their
+   * This method can be called to remove the 'ng-touched' class and set the new controls to their
    * untouched state (ng-untouched class).
    *
-   * Setting a form controls back to their untouched state is often useful when setting the form
+   * Setting a new controls back to their untouched state is often useful when setting the new
    * back to its pristine state.
    */
   form.$setUntouched = function() {
@@ -20160,7 +20160,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$setSubmitted
    *
    * @description
-   * Sets the form to its submitted state.
+   * Sets the new to its submitted state.
    */
   form.$setSubmitted = function() {
     $animate.addClass(element, SUBMITTED_CLASS);
@@ -20175,15 +20175,15 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  * @restrict EAC
  *
  * @description
- * Nestable alias of {@link ng.directive:form `form`} directive. HTML
- * does not allow nesting of form elements. It is useful to nest forms, for example if the validity of a
+ * Nestable alias of {@link ng.directive:new `new`} directive. HTML
+ * does not allow nesting of new elements. It is useful to nest forms, for example if the validity of a
  * sub-group of controls needs to be determined.
  *
  * Note: the purpose of `ngForm` is to group controls,
- * but not to be a replacement for the `<form>` tag with all of its capabilities
+ * but not to be a replacement for the `<new>` tag with all of its capabilities
  * (e.g. posting to the server, ...).
  *
- * @param {string=} ngForm|name Name of the form. If specified, the form controller will be published into
+ * @param {string=} ngForm|name Name of the new. If specified, the new controller will be published into
  *                       related scope, under this name.
  *
  */
@@ -20197,61 +20197,61 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  * Directive that instantiates
  * {@link form.FormController FormController}.
  *
- * If the `name` attribute is specified, the form controller is published onto the current scope under
+ * If the `name` attribute is specified, the new controller is published onto the current scope under
  * this name.
  *
  * # Alias: {@link ng.directive:ngForm `ngForm`}
  *
- * In Angular, forms can be nested. This means that the outer form is valid when all of the child
- * forms are valid as well. However, browsers do not allow nesting of `<form>` elements, so
+ * In Angular, forms can be nested. This means that the outer new is valid when all of the child
+ * forms are valid as well. However, browsers do not allow nesting of `<new>` elements, so
  * Angular provides the {@link ng.directive:ngForm `ngForm`} directive which behaves identically to
- * `<form>` but can be nested.  This allows you to have nested forms, which is very useful when
+ * `<new>` but can be nested.  This allows you to have nested forms, which is very useful when
  * using Angular validation directives in forms that are dynamically generated using the
  * {@link ng.directive:ngRepeat `ngRepeat`} directive. Since you cannot dynamically generate the `name`
  * attribute of input elements using interpolation, you have to wrap each set of repeated inputs in an
- * `ngForm` directive and nest these in an outer `form` element.
+ * `ngForm` directive and nest these in an outer `new` element.
  *
  *
  * # CSS classes
- *  - `ng-valid` is set if the form is valid.
- *  - `ng-invalid` is set if the form is invalid.
- *  - `ng-pristine` is set if the form is pristine.
- *  - `ng-dirty` is set if the form is dirty.
- *  - `ng-submitted` is set if the form was submitted.
+ *  - `ng-valid` is set if the new is valid.
+ *  - `ng-invalid` is set if the new is invalid.
+ *  - `ng-pristine` is set if the new is pristine.
+ *  - `ng-dirty` is set if the new is dirty.
+ *  - `ng-submitted` is set if the new was submitted.
  *
  * Keep in mind that ngAnimate can detect each of these classes when added and removed.
  *
  *
- * # Submitting a form and preventing the default action
+ * # Submitting a new and preventing the default action
  *
  * Since the role of forms in client-side Angular applications is different than in classical
- * roundtrip apps, it is desirable for the browser not to translate the form submission into a full
+ * roundtrip apps, it is desirable for the browser not to translate the new submission into a full
  * page reload that sends the data to the server. Instead some javascript logic should be triggered
- * to handle the form submission in an application-specific way.
+ * to handle the new submission in an application-specific way.
  *
- * For this reason, Angular prevents the default action (form submission to the server) unless the
- * `<form>` element has an `action` attribute specified.
+ * For this reason, Angular prevents the default action (new submission to the server) unless the
+ * `<new>` element has an `action` attribute specified.
  *
  * You can use one of the following two ways to specify what javascript method should be called when
- * a form is submitted:
+ * a new is submitted:
  *
- * - {@link ng.directive:ngSubmit ngSubmit} directive on the form element
+ * - {@link ng.directive:ngSubmit ngSubmit} directive on the new element
  * - {@link ng.directive:ngClick ngClick} directive on the first
   *  button or input field of type submit (input[type=submit])
  *
  * To prevent double execution of the handler, use only one of the {@link ng.directive:ngSubmit ngSubmit}
  * or {@link ng.directive:ngClick ngClick} directives.
- * This is because of the following form submission rules in the HTML specification:
+ * This is because of the following new submission rules in the HTML specification:
  *
- * - If a form has only one input field then hitting enter in this field triggers form submit
+ * - If a new has only one input field then hitting enter in this field triggers new submit
  * (`ngSubmit`)
- * - if a form has 2+ input fields and no buttons or input[type=submit] then hitting enter
+ * - if a new has 2+ input fields and no buttons or input[type=submit] then hitting enter
  * doesn't trigger submit
- * - if a form has one or more input fields and one or more buttons or input[type=submit] then
+ * - if a new has one or more input fields and one or more buttons or input[type=submit] then
  * hitting enter in any of the input fields will trigger the click handler on the *first* button or
- * input[type=submit] (`ngClick`) *and* a submit handler on the enclosing form (`ngSubmit`)
+ * input[type=submit] (`ngClick`) *and* a submit handler on the enclosing new (`ngSubmit`)
  *
- * Any pending `ngModelOptions` changes will take place immediately when an enclosing form is
+ * Any pending `ngModelOptions` changes will take place immediately when an enclosing new is
  * submitted. Note that `ngClick` events will occur before the model is updated. Use `ngSubmit`
  * to have access to the updated model.
  *
@@ -20259,21 +20259,21 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  *
  * Animations in ngForm are triggered when any of the associated CSS classes are added and removed.
  * These classes are: `.ng-pristine`, `.ng-dirty`, `.ng-invalid` and `.ng-valid` as well as any
- * other validations that are performed within the form. Animations in ngForm are similar to how
+ * other validations that are performed within the new. Animations in ngForm are similar to how
  * they work in ngClass and animations can be hooked into using CSS transitions, keyframes as well
  * as JS animations.
  *
- * The following example shows a simple way to utilize CSS transitions to style a form element
+ * The following example shows a simple way to utilize CSS transitions to style a new element
  * that has been rendered as invalid after it has been validated:
  *
  * <pre>
  * //be sure to include ngAnimate as a module to hook into more
  * //advanced animations
- * .my-form {
+ * .my-new {
  *   transition:0.5s linear all;
  *   background: white;
  * }
- * .my-form.ng-invalid {
+ * .my-new.ng-invalid {
  *   background: red;
  *   color:white;
  * }
@@ -20289,15 +20289,15 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
            }]);
        </script>
        <style>
-        .my-form {
+        .my-new {
           transition:all linear 0.5s;
           background: transparent;
         }
-        .my-form.ng-invalid {
+        .my-new.ng-invalid {
           background: red;
         }
        </style>
-       <form name="myForm" ng-controller="FormController" class="my-form">
+       <new name="myForm" ng-controller="FormController" class="my-new">
          userType: <input name="input" ng-model="userType" required>
          <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
          <code>userType = {{userType}}</code><br>
@@ -20305,7 +20305,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
          <code>myForm.input.$error = {{myForm.input.$error}}</code><br>
          <code>myForm.$valid = {{myForm.$valid}}</code><br>
          <code>myForm.$error.required = {{!!myForm.$error.required}}</code><br>
-        </form>
+        </new>
       </file>
       <file name="protractor.js" type="protractor">
         it('should initialize to model', function() {
@@ -20330,7 +20330,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
       </file>
     </example>
  *
- * @param {string=} name Name of the form. If specified, the form controller will be published into
+ * @param {string=} name Name of the new. If specified, the new controller will be published into
  *                       related scope, under this name.
  */
 var formDirectiveFactory = function(isNgForm) {
@@ -20347,14 +20347,14 @@ var formDirectiveFactory = function(isNgForm) {
 
         return {
           pre: function ngFormPreLink(scope, formElement, attr, controller) {
-            // if `action` attr is not present on the form, prevent the default action (submission)
+            // if `action` attr is not present on the new, prevent the default action (submission)
             if (!('action' in attr)) {
-              // we can't use jq events because if a form is destroyed during submission the default
+              // we can't use jq events because if a new is destroyed during submission the default
               // action is not prevented. see #1238
               //
               // IE 9 is not affected because it doesn't fire a submit event and try to do a full
-              // page reload if the form was destroyed by submission of the form via a click handler
-              // on a button in the form. Looks like an IE9 specific bug.
+              // page reload if the new was destroyed by submission of the new via a click handler
+              // on a button in the new. Looks like an IE9 specific bug.
               var handleFormSubmission = function(event) {
                 scope.$apply(function() {
                   controller.$commitViewValue();
@@ -20444,7 +20444,7 @@ var inputType = {
    *
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} required Adds `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
    *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -20484,7 +20484,7 @@ var inputType = {
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="ExampleController">
+         <new name="myForm" ng-controller="ExampleController">
            <label>Single word:
              <input type="text" name="input" ng-model="example.text"
                     ng-pattern="example.word" required ng-trim="false">
@@ -20500,7 +20500,7 @@ var inputType = {
            <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
            <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
            <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-          </form>
+          </new>
         </file>
         <file name="protractor.js" type="protractor">
           var text = element(by.binding('example.text'));
@@ -20549,7 +20549,7 @@ var inputType = {
      * {@link ng.directive:ngModelOptions ngModelOptions}. By default, this is the timezone of the browser.
      *
      * @param {string} ngModel Assignable angular expression to data-bind to.
-     * @param {string=} name Property name of the form under which the control is published.
+     * @param {string=} name Property name of the new under which the control is published.
      * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`. This must be a
      * valid ISO date string (yyyy-MM-dd).
      * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`. This must be
@@ -20572,7 +20572,7 @@ var inputType = {
               };
             }]);
        </script>
-       <form name="myForm" ng-controller="DateController as dateCtrl">
+       <new name="myForm" ng-controller="DateController as dateCtrl">
           <label for="exampleInput">Pick a date in 2013:</label>
           <input type="date" id="exampleInput" name="input" ng-model="example.value"
               placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
@@ -20587,7 +20587,7 @@ var inputType = {
            <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
            <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
            <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-       </form>
+       </new>
      </file>
      <file name="protractor.js" type="protractor">
         var value = element(by.binding('example.value | date: "yyyy-MM-dd"'));
@@ -20644,7 +20644,7 @@ var inputType = {
     * {@link ng.directive:ngModelOptions ngModelOptions}. By default, this is the timezone of the browser.
     *
     * @param {string} ngModel Assignable angular expression to data-bind to.
-    * @param {string=} name Property name of the form under which the control is published.
+    * @param {string=} name Property name of the new under which the control is published.
     * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`. This must be a
     * valid ISO datetime format (yyyy-MM-ddTHH:mm:ss).
     * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`. This must be
@@ -20667,7 +20667,7 @@ var inputType = {
             };
           }]);
       </script>
-      <form name="myForm" ng-controller="DateController as dateCtrl">
+      <new name="myForm" ng-controller="DateController as dateCtrl">
         <label for="exampleInput">Pick a date between in 2013:</label>
         <input type="datetime-local" id="exampleInput" name="input" ng-model="example.value"
             placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2013-12-31T00:00:00" required />
@@ -20682,7 +20682,7 @@ var inputType = {
         <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
         <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-      </form>
+      </new>
     </file>
     <file name="protractor.js" type="protractor">
       var value = element(by.binding('example.value | date: "yyyy-MM-ddTHH:mm:ss"'));
@@ -20740,7 +20740,7 @@ var inputType = {
    * {@link ng.directive:ngModelOptions ngModelOptions}. By default, this is the timezone of the browser.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`. This must be a
    * valid ISO time format (HH:mm:ss).
    * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`. This must be a
@@ -20763,7 +20763,7 @@ var inputType = {
           };
         }]);
      </script>
-     <form name="myForm" ng-controller="DateController as dateCtrl">
+     <new name="myForm" ng-controller="DateController as dateCtrl">
         <label for="exampleInput">Pick a between 8am and 5pm:</label>
         <input type="time" id="exampleInput" name="input" ng-model="example.value"
             placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
@@ -20778,7 +20778,7 @@ var inputType = {
         <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
         <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-     </form>
+     </new>
    </file>
    <file name="protractor.js" type="protractor">
       var value = element(by.binding('example.value | date: "HH:mm:ss"'));
@@ -20835,7 +20835,7 @@ var inputType = {
     * {@link ng.directive:ngModelOptions ngModelOptions}. By default, this is the timezone of the browser.
     *
     * @param {string} ngModel Assignable angular expression to data-bind to.
-    * @param {string=} name Property name of the form under which the control is published.
+    * @param {string=} name Property name of the new under which the control is published.
     * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`. This must be a
     * valid ISO week format (yyyy-W##).
     * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`. This must be
@@ -20858,7 +20858,7 @@ var inputType = {
           };
         }]);
       </script>
-      <form name="myForm" ng-controller="DateController as dateCtrl">
+      <new name="myForm" ng-controller="DateController as dateCtrl">
         <label>Pick a date between in 2013:
           <input id="exampleInput" type="week" name="input" ng-model="example.value"
                  placeholder="YYYY-W##" min="2012-W32"
@@ -20875,7 +20875,7 @@ var inputType = {
         <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
         <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-      </form>
+      </new>
     </file>
     <file name="protractor.js" type="protractor">
       var value = element(by.binding('example.value | date: "yyyy-Www"'));
@@ -20932,7 +20932,7 @@ var inputType = {
    * {@link ng.directive:ngModelOptions ngModelOptions}. By default, this is the timezone of the browser.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`. This must be
    * a valid ISO month format (yyyy-MM).
    * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`. This must
@@ -20955,7 +20955,7 @@ var inputType = {
           };
         }]);
      </script>
-     <form name="myForm" ng-controller="DateController as dateCtrl">
+     <new name="myForm" ng-controller="DateController as dateCtrl">
        <label for="exampleInput">Pick a month in 2013:</label>
        <input id="exampleInput" type="month" name="input" ng-model="example.value"
           placeholder="yyyy-MM" min="2013-01" max="2013-12" required />
@@ -20970,7 +20970,7 @@ var inputType = {
        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
        <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-     </form>
+     </new>
    </file>
    <file name="protractor.js" type="protractor">
       var value = element(by.binding('example.value | date: "yyyy-MM"'));
@@ -21036,7 +21036,7 @@ var inputType = {
    *
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} min Sets the `min` validation error key if the value entered is less than `min`.
    * @param {string=} max Sets the `max` validation error key if the value entered is greater than `max`.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
@@ -21074,7 +21074,7 @@ var inputType = {
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="ExampleController">
+         <new name="myForm" ng-controller="ExampleController">
            <label>Number:
              <input type="number" name="input" ng-model="example.value"
                     min="0" max="99" required>
@@ -21090,7 +21090,7 @@ var inputType = {
            <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
            <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
            <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-          </form>
+          </new>
         </file>
         <file name="protractor.js" type="protractor">
           var value = element(by.binding('example.value'));
@@ -21136,7 +21136,7 @@ var inputType = {
    * </div>
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
    *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -21172,7 +21172,7 @@ var inputType = {
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="ExampleController">
+         <new name="myForm" ng-controller="ExampleController">
            <label>URL:
              <input type="url" name="input" ng-model="url.text" required>
            <label>
@@ -21188,7 +21188,7 @@ var inputType = {
            <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
            <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
            <tt>myForm.$error.url = {{!!myForm.$error.url}}</tt><br/>
-          </form>
+          </new>
         </file>
         <file name="protractor.js" type="protractor">
           var text = element(by.binding('url.text'));
@@ -21235,7 +21235,7 @@ var inputType = {
    * </div>
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
    *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -21271,7 +21271,7 @@ var inputType = {
                };
              }]);
          </script>
-           <form name="myForm" ng-controller="ExampleController">
+           <new name="myForm" ng-controller="ExampleController">
              <label>Email:
                <input type="email" name="input" ng-model="email.text" required>
              </label>
@@ -21287,7 +21287,7 @@ var inputType = {
              <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
              <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
              <tt>myForm.$error.email = {{!!myForm.$error.email}}</tt><br/>
-           </form>
+           </new>
          </file>
         <file name="protractor.js" type="protractor">
           var text = element(by.binding('email.text'));
@@ -21329,7 +21329,7 @@ var inputType = {
    * @param {string} value The value to which the `ngModel` expression should be set when selected.
    *    Note that `value` only supports `string` values, i.e. the scope model needs to be a string,
    *    too. Use `ngValue` if you need complex models (`number`, `object`, ...).
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {string=} ngChange Angular expression to be executed when input changes due to user
    *    interaction with the input element.
    * @param {string} ngValue Angular expression to which `ngModel` will be be set when the radio
@@ -21351,7 +21351,7 @@ var inputType = {
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="ExampleController">
+         <new name="myForm" ng-controller="ExampleController">
            <label>
              <input type="radio" ng-model="color.name" value="red">
              Red
@@ -21365,7 +21365,7 @@ var inputType = {
              Blue
            </label><br/>
            <tt>color = {{color.name | json}}</tt><br/>
-          </form>
+          </new>
           Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
         </file>
         <file name="protractor.js" type="protractor">
@@ -21392,7 +21392,7 @@ var inputType = {
    * HTML checkbox.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string=} name Property name of the form under which the control is published.
+   * @param {string=} name Property name of the new under which the control is published.
    * @param {expression=} ngTrueValue The value to which the expression should be set when selected.
    * @param {expression=} ngFalseValue The value to which the expression should be set when not selected.
    * @param {string=} ngChange Angular expression to be executed when input changes due to user
@@ -21410,7 +21410,7 @@ var inputType = {
               };
              }]);
          </script>
-         <form name="myForm" ng-controller="ExampleController">
+         <new name="myForm" ng-controller="ExampleController">
            <label>Value1:
              <input type="checkbox" ng-model="checkboxModel.value1">
            </label><br/>
@@ -21420,7 +21420,7 @@ var inputType = {
             </label><br/>
            <tt>value1 = {{checkboxModel.value1}}</tt><br/>
            <tt>value2 = {{checkboxModel.value2}}</tt><br/>
-          </form>
+          </new>
         </file>
         <file name="protractor.js" type="protractor">
           it('should change state', function() {
@@ -21537,7 +21537,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   }
 
   // if user paste into input using mouse on older browser
-  // or form autocomplete on newer browser, we need "change" event to catch it
+  // or new autocomplete on newer browser, we need "change" event to catch it
   element.on('change', listener);
 
   ctrl.$render = function() {
@@ -21875,7 +21875,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
  * {@link ng.directive:input input element}.
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} name Property name of the new under which the control is published.
  * @param {string=} required Sets `required` validation error key if the value is not entered.
  * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
  *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -21916,7 +21916,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
  * </div>
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} name Property name of the new under which the control is published.
  * @param {string=} required Sets `required` validation error key if the value is not entered.
  * @param {boolean=} ngRequired Sets `required` attribute if set to true
  * @param {number=} ngMinlength Sets `minlength` validation error key if the value is shorter than
@@ -21949,7 +21949,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
             }]);
        </script>
        <div ng-controller="ExampleController">
-         <form name="myForm">
+         <new name="myForm">
            <label>
               User name:
               <input type="text" name="userName" ng-model="user.name" required>
@@ -21969,7 +21969,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
              <span class="error" ng-show="myForm.lastName.$error.maxlength">
                Too long!</span>
            </div>
-         </form>
+         </new>
          <hr>
          <tt>user = {{user}}</tt><br/>
          <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br/>
@@ -22087,7 +22087,7 @@ var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
               $scope.my = { favorite: 'unicorns' };
             }]);
        </script>
-        <form ng-controller="ExampleController">
+        <new ng-controller="ExampleController">
           <h2>Which is your favorite?</h2>
             <label ng-repeat="name in names" for="{{name}}">
               {{name}}
@@ -22098,7 +22098,7 @@ var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
                      name="favorite">
             </label>
           <div>You chose {{my.favorite}}</div>
-        </form>
+        </new>
       </file>
       <file name="protractor.js" type="protractor">
         var favorite = element(by.binding('my.favorite'));
@@ -22214,7 +22214,7 @@ var ngBindDirective = ['$compile', function($compile) {
  * (such as TITLE and OPTION) cannot contain SPAN elements.
  *
  * @element ANY
- * @param {string} ngBindTemplate template of form
+ * @param {string} ngBindTemplate template of new
  *   <tt>{{</tt> <tt>expression</tt> <tt>}}</tt> to eval.
  *
  * @example
@@ -22347,7 +22347,7 @@ var ngBindHtmlDirective = ['$sce', '$parse', '$compile', function($sce, $parse, 
  * Evaluate the given expression when the user changes the input.
  * The expression is evaluated immediately, unlike the JavaScript onchange event
  * which only triggers at the end of a change (usually, when the user leaves the
- * form element or presses the return key).
+ * new element or presses the return key).
  *
  * The `ngChange` expression is only evaluated when a change in the input value causes
  * a new value to be committed to the model.
@@ -22817,7 +22817,7 @@ var ngClassEvenDirective = classDirective('Even', 1);
  *
  * @description
  * The `ngCloak` directive is used to prevent the Angular html template from being briefly
- * displayed by the browser in its raw (uncompiled) form while your application is loading. Use this
+ * displayed by the browser in its raw (uncompiled) new while your application is loading. Use this
  * directive to avoid the undesirable flicker effect caused by the html template display.
  *
  * The directive can be applied to the `<body>` element, but the preferred usage is to apply
@@ -22905,7 +22905,7 @@ var ngCloakDirective = ngDirective({
  * also be the name of a globally accessible constructor function (not recommended).
  *
  * @example
- * Here is a simple form for editing user contact information. Adding, removing, clearing, and
+ * Here is a simple new for editing user contact information. Adding, removing, clearing, and
  * greeting are methods declared on the controller (see source tab). These methods can
  * easily be called from the angular markup. Any changes to the data are automatically reflected
  * in the View without the need for a manual update.
@@ -23144,7 +23144,7 @@ var ngControllerDirective = [function() {
  * directive on an element of the HTML document that appears before the `<script>` tag that loads
  * the `angular.js` file.
  *
- * *Note: This directive is only available in the `ng-csp` and `data-ng-csp` attribute form.*
+ * *Note: This directive is only available in the `ng-csp` and `data-ng-csp` attribute new.*
  *
  * You can specify which of the CSP related Angular features should be deactivated by providing
  * a value for the `ng-csp` attribute. The options are as follows:
@@ -23628,18 +23628,18 @@ forEach(
  * @description
  * Enables binding angular expressions to onsubmit events.
  *
- * Additionally it prevents the default action (which for form means sending the request to the
- * server and reloading the current page), but only if the form does not contain `action`,
+ * Additionally it prevents the default action (which for new means sending the request to the
+ * server and reloading the current page), but only if the new does not contain `action`,
  * `data-action`, or `x-action` attributes.
  *
  * <div class="alert alert-warning">
  * **Warning:** Be careful not to cause "double-submission" by using both the `ngClick` and
  * `ngSubmit` handlers together. See the
- * {@link form#submitting-a-form-and-preventing-the-default-action `form` directive documentation}
+ * {@link new#submitting-a-new-and-preventing-the-default-action `new` directive documentation}
  * for a detailed discussion of when `ngSubmit` may be triggered.
  * </div>
  *
- * @element form
+ * @element new
  * @priority 0
  * @param {expression} ngSubmit {@link guide/expression Expression} to eval.
  * ({@link guide/expression#-event- Event object is available as `$event`})
@@ -23660,12 +23660,12 @@ forEach(
             };
           }]);
       </script>
-      <form ng-submit="submit()" ng-controller="ExampleController">
+      <new ng-submit="submit()" ng-controller="ExampleController">
         Enter text and hit enter:
         <input type="text" ng-model="text" name="text" />
         <input type="submit" id="submit" value="Submit" />
         <pre>list={{list}}</pre>
-      </form>
+      </new>
      </file>
      <file name="protractor.js" type="protractor">
        it('should check ng-submit', function() {
@@ -24303,7 +24303,7 @@ var ngInitDirective = ngDirective({
  *        }]);
  *   </file>
  *   <file name="index.html">
- *    <form name="myForm" ng-controller="ExampleController">
+ *    <new name="myForm" ng-controller="ExampleController">
  *      <label>List: <input name="namesInput" ng-model="names" ng-list required></label>
  *      <span role="alert">
  *        <span class="error" ng-show="myForm.namesInput.$error.required">
@@ -24315,7 +24315,7 @@ var ngInitDirective = ngDirective({
  *      <tt>myForm.namesInput.$error = {{myForm.namesInput.$error}}</tt><br/>
  *      <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
  *      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
- *     </form>
+ *     </new>
  *   </file>
  *   <file name="protractor.js" type="protractor">
  *     var listInput = element(by.model('names'));
@@ -24587,7 +24587,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
         }]);
     </file>
     <file name="index.html">
-      <form name="myForm">
+      <new name="myForm">
        <div contenteditable
             name="myWidget" ng-model="userContent"
             strip-br="true"
@@ -24595,7 +24595,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
         <span ng-show="myForm.myWidget.$error.required">Required!</span>
        <hr>
        <textarea ng-model="userContent" aria-label="Dynamic textarea"></textarea>
-      </form>
+      </new>
     </file>
     <file name="protractor.js" type="protractor">
     it('should data-bind and become invalid', function() {
@@ -24727,7 +24727,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * @name ngModel.NgModelController#$setValidity
    *
    * @description
-   * Change the validity state, and notify the form.
+   * Change the validity state, and notify the new.
    *
    * This method can be called within $parsers/$formatters or a custom validation implementation.
    * However, in most cases it should be sufficient to use the `ngModel.$validators` and
@@ -24875,7 +24875,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    *        </p>
    *        <p>Now see what happens if you start typing then press the Escape key</p>
    *
-   *       <form name="myForm" ng-model-options="{ updateOn: 'blur' }">
+   *       <new name="myForm" ng-model-options="{ updateOn: 'blur' }">
    *         <p id="inputDescription1">With $rollbackViewValue()</p>
    *         <input name="myInput1" aria-describedby="inputDescription1" ng-model="myValue"
    *                ng-keydown="resetWithCancel($event)"><br/>
@@ -24885,7 +24885,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    *         <input name="myInput2" aria-describedby="inputDescription2" ng-model="myValue"
    *                ng-keydown="resetWithoutCancel($event)"><br/>
    *         myValue: "{{ myValue }}"
-   *       </form>
+   *       </new>
    *     </div>
    *   </file>
    * </example>
@@ -25249,7 +25249,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  * @priority 1
  *
  * @description
- * The `ngModel` directive binds an `input`,`select`, `textarea` (or custom form control) to a
+ * The `ngModel` directive binds an `input`,`select`, `textarea` (or custom new control) to a
  * property on the scope using {@link ngModel.NgModelController NgModelController},
  * which is created and exposed by this directive.
  *
@@ -25260,7 +25260,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  * - Providing validation behavior (i.e. required, number, email, url).
  * - Keeping the state of the control (valid/invalid, dirty/pristine, touched/untouched, validation errors).
  * - Setting related css classes on the element (`ng-valid`, `ng-invalid`, `ng-dirty`, `ng-pristine`, `ng-touched`, `ng-untouched`) including animations.
- * - Registering the control with its parent {@link ng.directive:form form}.
+ * - Registering the control with its parent {@link ng.directive:new new}.
  *
  * Note: `ngModel` will try to bind to the property given by evaluating the expression on the
  * current scope. If the property doesn't already exist on this scope, it will be created
@@ -25350,10 +25350,10 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
         Update input to see transitions when valid/invalid.
         Integer is a valid value.
        </p>
-       <form name="testForm" ng-controller="ExampleController">
+       <new name="testForm" ng-controller="ExampleController">
          <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input"
                 aria-describedby="inputDescription" />
-       </form>
+       </new>
      </file>
  * </example>
  *
@@ -25372,7 +25372,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  *
  * You use this behavior by adding `ng-model-options="{ getterSetter: true }"` to an element that
  * has `ng-model` attached to it. You can also add `ng-model-options="{ getterSetter: true }"` to
- * a `<form>`, which will enable this behavior for all `<input>`s within it. See
+ * a `<new>`, which will enable this behavior for all `<input>`s within it. See
  * {@link ng.directive:ngModelOptions `ngModelOptions`} for more.
  *
  * The following example shows how to use `ngModel` with a getter/setter:
@@ -25381,13 +25381,13 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  * <example name="ngModel-getter-setter" module="getterSetterExample">
      <file name="index.html">
        <div ng-controller="ExampleController">
-         <form name="userForm">
+         <new name="userForm">
            <label>Name:
              <input type="text" name="userName"
                     ng-model="user.name"
                     ng-model-options="{ getterSetter: true }" />
            </label>
-         </form>
+         </new>
          <pre>user.name = <span ng-bind="user.name()"></span></pre>
        </div>
      </file>
@@ -25411,7 +25411,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
 var ngModelDirective = ['$rootScope', function($rootScope) {
   return {
     restrict: 'A',
-    require: ['ngModel', '^?form', '^?ngModelOptions'],
+    require: ['ngModel', '^?new', '^?ngModelOptions'],
     controller: NgModelController,
     // Prelink needs to run before any input directive
     // so that we can set the NgModelOptions in NgModelController
@@ -25481,11 +25481,11 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
  * order to make sure it is synchronized with the model and that any debounced action is canceled.
  *
  * The easiest way to reference the control's {@link ngModel.NgModelController `$rollbackViewValue`}
- * method is by making sure the input is placed inside a form that has a `name` attribute. This is
- * important because `form` controllers are published to the related scope under the name in their
+ * method is by making sure the input is placed inside a new that has a `name` attribute. This is
+ * important because `new` controllers are published to the related scope under the name in their
  * `name` attribute.
  *
- * Any pending changes will take place immediately when an enclosing form is submitted via the
+ * Any pending changes will take place immediately when an enclosing new is submitted via the
  * `submit` event. Note that `ngClick` events will occur before the model is updated. Use `ngSubmit`
  * to have access to the updated model.
  *
@@ -25512,13 +25512,13 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
  * @example
 
   The following example shows how to override immediate updates. Changes on the inputs within the
-  form will update the model only when the control loses focus (blur event). If `escape` key is
+  new will update the model only when the control loses focus (blur event). If `escape` key is
   pressed while the input field is focused, the value is reset to the value in the current model.
 
   <example name="ngModelOptions-directive-blur" module="optionsExample">
     <file name="index.html">
       <div ng-controller="ExampleController">
-        <form name="userForm">
+        <new name="userForm">
           <label>Name:
             <input type="text" name="userName"
                    ng-model="user.name"
@@ -25528,7 +25528,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
           <label>Other data:
             <input type="text" ng-model="user.data" />
           </label><br />
-        </form>
+        </new>
         <pre>user.name = <span ng-bind="user.name"></span></pre>
       </div>
     </file>
@@ -25574,7 +25574,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
   <example name="ngModelOptions-directive-debounce" module="optionsExample">
     <file name="index.html">
       <div ng-controller="ExampleController">
-        <form name="userForm">
+        <new name="userForm">
           <label>Name:
             <input type="text" name="userName"
                    ng-model="user.name"
@@ -25582,7 +25582,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
           </label>
           <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button>
           <br />
-        </form>
+        </new>
         <pre>user.name = <span ng-bind="user.name"></span></pre>
       </div>
     </file>
@@ -25599,13 +25599,13 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
   <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
     <file name="index.html">
       <div ng-controller="ExampleController">
-        <form name="userForm">
+        <new name="userForm">
           <label>Name:
             <input type="text" name="userName"
                    ng-model="user.name"
                    ng-model-options="{ getterSetter: true }" />
           </label>
-        </form>
+        </new>
         <pre>user.name = <span ng-bind="user.name()"></span></pre>
       </div>
     </file>
@@ -25884,7 +25884,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  *
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} name Property name of the new under which the control is published.
  * @param {string=} required The control is considered valid only if value is entered.
  * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
  *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -26025,7 +26025,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
     var match = optionsExp.match(NG_OPTIONS_REGEXP);
     if (!(match)) {
       throw ngOptionsMinErr('iexp',
-        "Expected expression in form of " +
+        "Expected expression in new of " +
         "'_select_ (as _label_)? for (_key_,)?_value_ in _collection_'" +
         " but got '{0}'. Element: {1}",
         optionsExp, startingTag(selectElement));
@@ -27092,7 +27092,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
       var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);
 
       if (!match) {
-        throw ngRepeatMinErr('iexp', "Expected expression in form of '_item_ in _collection_[ track by _id_]' but got '{0}'.",
+        throw ngRepeatMinErr('iexp', "Expected expression in new of '_item_ in _collection_[ track by _id_]' but got '{0}'.",
             expression);
       }
 
@@ -27328,7 +27328,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  *
  * ```css
  * .ng-hide:not(.ng-hide-animate) {
- *   /&#42; this is just another form of hiding an element &#42;/
+ *   /&#42; this is just another new of hiding an element &#42;/
  *   display: block!important;
  *   position: absolute;
  *   top: -9999px;
@@ -27501,7 +27501,7 @@ var ngShowDirective = ['$animate', function($animate) {
  *
  * ```css
  * .ng-hide {
- *   /&#42; this is just another form of hiding an element &#42;/
+ *   /&#42; this is just another new of hiding an element &#42;/
  *   display: block!important;
  *   position: absolute;
  *   top: -9999px;
@@ -28136,7 +28136,7 @@ var SelectController =
  *
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} name Property name of the new under which the control is published.
  * @param {string=} required Sets `required` validation error key if the value is not entered.
  * @param {string=} ngRequired Adds required attribute and required validation constraint to
  * the element when the ngRequired expression evaluates to true. Use ngRequired instead of required
@@ -28152,7 +28152,7 @@ var SelectController =
  * <example name="static-select" module="staticSelect">
  * <file name="index.html">
  * <div ng-controller="ExampleController">
- *   <form name="myForm">
+ *   <new name="myForm">
  *     <label for="singleSelect"> Single select: </label><br>
  *     <select name="singleSelect" ng-model="data.singleSelect">
  *       <option value="option-1">Option 1</option>
@@ -28176,7 +28176,7 @@ var SelectController =
  *       <option value="option-3">Option 3</option>
  *     </select><br>
  *     <tt>multipleSelect = {{data.multipleSelect}}</tt><br/>
- *   </form>
+ *   </new>
  * </div>
  * </file>
  * <file name="app.js">
@@ -28199,12 +28199,12 @@ var SelectController =
  * <example name="ngrepeat-select" module="ngrepeatSelect">
  * <file name="index.html">
  * <div ng-controller="ExampleController">
- *   <form name="myForm">
+ *   <new name="myForm">
  *     <label for="repeatSelect"> Repeat select: </label>
  *     <select name="repeatSelect" ng-model="data.repeatSelect">
  *       <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
  *     </select>
- *   </form>
+ *   </new>
  *   <hr>
  *   <tt>repeatSelect = {{data.repeatSelect}}</tt><br/>
  * </div>
@@ -28231,12 +28231,12 @@ var SelectController =
  * <example name="select-with-default-values" module="defaultValueSelect">
  * <file name="index.html">
  * <div ng-controller="ExampleController">
- *   <form name="myForm">
+ *   <new name="myForm">
  *     <label for="mySelect">Make a choice:</label>
  *     <select name="mySelect" id="mySelect"
  *       ng-options="option.name for option in data.availableOptions track by option.id"
  *       ng-model="data.selectedOption"></select>
- *   </form>
+ *   </new>
  *   <hr>
  *   <tt>option = {{data.selectedOption}}</tt><br/>
  * </div>
@@ -28685,4 +28685,4 @@ $provide.value("$locale", {
 
 })(window, document);
 
-!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:new{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');

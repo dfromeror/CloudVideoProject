@@ -153,7 +153,7 @@ jQuery.fn.extend({
 				var data = data_user.get( this, camelKey );
 
 				// For HTML5 data-* attribute interop, we have to
-				// store property names with dashes in a camelCase form.
+				// store property names with dashes in a camelCase new.
 				// This might not apply to all properties...*
 				data_user.set( this, camelKey, value );
 

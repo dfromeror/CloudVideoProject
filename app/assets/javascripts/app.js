@@ -38,3 +38,15 @@ app.controller('NewContestController', ['$scope', function($scope){
         }
     });
 }]);
+
+app.controller('ContestsIndexController', ['$scope', function($scope){
+    $scope.goTo = function(url){
+        document.location = url;
+    }
+    $scope.copyLink = function(e, link){
+        var input = $('#linkToCopy');
+        input.val(link);
+        $('#myModal').modal('show');
+        input.select();
+    }
+}]);
