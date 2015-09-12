@@ -1,7 +1,7 @@
 <h1>Create a new Contest</h1>
 <div class="row" ng-controller="NewContestController">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_for :contest, url: { action: "create" }, html: { class: 'new-horizontal' } do %>
+    <%= form_for :contest, url: { action: "create" }, html: { class: 'form-horizontal' } do %>
         <input type="hidden" name="contest[user_id]" value="<%=	 user_logged_id %>">
         <div class="form-group">
           <label for="name">Contest Name:</label>
@@ -20,12 +20,16 @@
           <input type="text" class="form-control" id="url" name="contest[url]" ng-model="contest.url" required />
         </div>
         <div class="form-group">
-          <label for="url">Start Date:</label>
-          <input type="text" class="form-control" id="startDate" name="contest[start_date]" ng-model="contest.startDate" required />
-        </div>
-        <div class="form-group">
-          <label for="url">End Date:</label>
-          <input type="text" class="form-control" id="endDate" name="contest[end_date]" ng-model="contest.endDate" required />
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag :start_date %>
+              <%= date_select(:contest, :start_date) %>
+            </div>
+            <div class="col-md-6">
+              <label for="url">End Date:</label>
+              <%= date_select(:contest, :end_date, class: "form-control") %>
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="url">Award Description:</label>

@@ -11,9 +11,9 @@
         <li class="active"><a href="/">Home</a></li>
         <% if is_user_logged %>
             <li><%= link_to 'New Contest', new_contest_path  %></li>
-            <li><a href="/contests/index">My Contests</a></li>
+            <li><a href="/mycontests">My Contests</a></li>
         <% end %>
-        <li><a href="/contests/browse">Browse Contests</a></li>
+        <li><a href="/contests/">Browse Contests</a></li>
         <li><a href="#">About Us</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

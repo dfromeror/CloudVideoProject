@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
+  resources :video_statuses
+
+  resources :videos
+
   resources :contests
-
-  get 'contest/index'
-
-  get 'contest/new'
-
   resources :users
   resources :clients
 
@@ -18,11 +17,14 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post '/login' => 'users#login'
+  get '/mycontests' => 'contests#mycontests'
   get '/logout' => 'users#logout'
-  get '/contest/new' => 'contest#new'
-  post '/contest/create' => 'contest#create'
-  get '/contest/browse' => 'contest#browse'
-  get '/contest/index' => 'contest#index'
+  post '/uploadvideos' => 'contests#uploadvideos'
+
+ # get '/contest/new' => 'contest#new'
+  #post '/contest/create' => 'contest#create'
+  #get '/contest/index' => 'contest#index'
+  #get '/contest/me' => 'contest#me'
 
 
   # Example of regular route:

@@ -1,1 +1,29 @@
-<hi>Contest <%= @contest.name %></hi>
+<div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Contest <%= @contest.name %></h1>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-2"><h3>Description</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-md-11 col-md-offset-1"><%= @contest.description %></div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-2"><h3>URL</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-md-11 col-md-offset-1"><%= @contest.url %></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render "contests/upload_videos" %>
+    </div>
+  </div>
+</div>
+

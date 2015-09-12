@@ -16,20 +16,19 @@
   <tbody>
   <% @contests.each do |contest| %>
       <tr>
-        <td><%= contest.name %></td>
+        <td><a href="<%= contest_url contest %>"> <%= contest.name %></a></td>
         <td><%= contest.description %></td>
         <td><%= time_ago_in_words contest.created_at %></td>
         <td><%= contest.start_date %></td>
         <td><%= contest.end_date %></td>
-        <% if is_user_logged %>
-        <!--<td><button type="button" class="btn btn-primary" ng-click="goTo('<%= url_for([:edit, contest]) %>')"><i class="glyphicon glyphicon-edit"></i></button></td>-->
-        <!--<td><button type="button" class="btn btn-danger" ng-click="goTo('<%= url_for([contest]) %>')"><i class="glyphicon glyphicon-remove"></i></button></td>-->
-        <!--<td><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-link"></i></button></td>-->
-        <td><i class="glyphicon glyphicon-edit"></i> <%= link_to 'Edit', edit_contest_path(contest) %></td>
-        <td><i class="glyphicon glyphicon-remove"></i> <%= link_to 'Delete', contest, method: :delete  %></td>
-
-        <% end %>
         <td><i class="glyphicon glyphicon-link"></i> <a href="#" ng-click="copyLink($event, '<%= contest.url %>')" class="btn btn-link">Copy Link</a></td>
+        <% if is_user_logged && user_logged_id == contest.user_id %>
+            <td><i class="glyphicon glyphicon-edit"></i> <%= link_to 'Edit', edit_contest_path(contest) %></td>
+            <td><i class="glyphicon glyphicon-remove"></i> <%= link_to 'Delete', contest, method: :delete  %></td>
+            <% else %>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

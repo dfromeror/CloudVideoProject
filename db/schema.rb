@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906194857) do
+ActiveRecord::Schema.define(version: 20150912160333) do
 
   create_table "clients", force: true do |t|
     t.string   "name",       null: false
@@ -43,6 +43,24 @@ ActiveRecord::Schema.define(version: 20150906194857) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_id"
+  end
+
+  create_table "video_statuses", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "videos", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "message"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contest_id"
   end
 
 end
