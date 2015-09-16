@@ -28,23 +28,8 @@
       <div class="col-md-11 col-md-offset-1"><%= @contest.url %></div>
     </div>
   </div>
-  <% @count = 1 %>
-  <% @contest.videos.each do |video| %>
-      <% if @count % 3 == 0 %><div class="row"><% end %>
-        <div class="col-md-4">
-          <div class="media">
-            <div class="media-bottom">
-              <%= video_player({:file => video.original_path}, {:id => "video_" + video.id.to_s, :name => "video_" + video.id.to_s}) %>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading"><%= video.original_name %></h4>
-            </div>
-          </div>
-
-        </div>
-      <% if @count % 3 == 0 %></div><% end %>
-      <% @count = @count + 1 %>
-  <% end %>
+  <br /><br /><br /><br />
+  <%= render "contests/video_list" %>
   <div class="row">
     <div class="col-md-12">
       <%= render "contests/upload_videos" %>

@@ -1,0 +1,17 @@
+<% @count = 1 %>
+<% @contest.videos.each do |video| %>
+    <% if @count % 3 == 0 %><div class="row"><% end %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <%= video_player({:file => video.original_path}, {:id => "video_" + video.id.to_s, :name => "video_" + video.id.to_s}) %>
+        <div class="caption">
+          <strong><%= video.original_name %></strong>
+          <p>...</p>
+          <p><%= "#{video.first_name} #{video.last_name}" %></p>
+          <p><%= time_ago_in_words video.created_at %></p>
+        </div>
+      </div>
+    </div>
+    <% if @count % 3 == 0 %></div><br /><br /><br /><% end %>
+    <% @count = @count + 1 %>
+<% end %>
