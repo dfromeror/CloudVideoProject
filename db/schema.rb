@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912160333) do
+ActiveRecord::Schema.define(version: 20150916005715) do
 
   create_table "clients", force: true do |t|
     t.string   "name",       null: false
@@ -53,14 +53,19 @@ ActiveRecord::Schema.define(version: 20150912160333) do
   end
 
   create_table "videos", force: true do |t|
+    t.string   "original_name"
+    t.string   "converted_name"
+    t.string   "original_format"
+    t.string   "original_path"
+    t.string   "converted_path"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "message"
-    t.integer  "status"
+    t.text     "message"
+    t.decimal  "size",            precision: 10, scale: 0
+    t.datetime "conversion_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "contest_id"
   end
 
 end
