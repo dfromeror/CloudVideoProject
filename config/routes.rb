@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post '/login' => 'users#login'
   get '/mycontests' => 'contests#mycontests'
   get '/logout' => 'users#logout'
-  post '/uploadvideos' => 'contests#uploadvideos'
+  post '/uploadvideo' => 'contests#upload_video'
 
  # get '/contest/new' => 'contest#new'
   #post '/contest/create' => 'contest#create'

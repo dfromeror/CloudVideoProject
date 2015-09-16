@@ -44,3 +44,4 @@ gem 'angular-ui-bootstrap-rails' #for bootstrap UI
 group :assets do
   gem 'jquery-ui-rails' # jquery ui
 end
+gem 'jw_player_helper'

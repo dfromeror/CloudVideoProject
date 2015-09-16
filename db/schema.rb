@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916005715) do
+ActiveRecord::Schema.define(version: 20150916022938) do
 
   create_table "clients", force: true do |t|
     t.string   "name",       null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150916005715) do
     t.datetime "updated_at"
   end
 
-  create_table "videos", force: true do |t|
+  create_table "uploads", force: true do |t|
     t.string   "original_name"
     t.string   "converted_name"
     t.string   "original_format"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20150916005715) do
     t.datetime "conversion_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contest_id"
+    t.integer  "video_status_id"
   end
 
 end

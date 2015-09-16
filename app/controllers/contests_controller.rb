@@ -4,9 +4,11 @@ class ContestsController < ApplicationController
   end
 
   def show
+    #include_all_helpers
     id = params[:id]
     @contest = Contest.find(id)
-    @clients = Client.all
+    #@clients = Client.all
+    @videos = Video.where(contest_id: id)
   end
 
   def destroy
@@ -53,7 +55,16 @@ class ContestsController < ApplicationController
     render 'contests/index'
   end
 
-  def uploadvideos
-    
+  def upload_video
+    contest = Contest.find(params[:video][:contest_id])
+    video_status = VideoStatus.find_by_order(1)
+    begin
+      Video.upload(params[:video])
+      flash[:success] = "The video was uploaded and is " + video_status.name
+    rescue => ex
+      logger.error ex.message
+      flash[:error] = ex.message
+    end
+    redirect_to contest
   end
 end

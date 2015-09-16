@@ -2,7 +2,8 @@
   <div class="panel panel-primary">
     <div class="panel-heading">Upload your videos</div>
     <div class="panel-body">
-      <%= form_tag '/uploadvideo', multipart: true, html: {class: 'form-horizontal'} do %>
+      <%= form_tag '/uploadvideo', multipart: true, class: 'form-horizontal' do %>
+          <%= hidden_field_tag "video[contest_id]", params[:id] %>
           <div class="form-group">
             <%= label_tag "first_name" %>
             <%= text_field_tag "video[first_name]", nil, {:class => 'form-control', :required => true} %>
@@ -21,7 +22,10 @@
           </div>
           <div class="form-group">
             <%= label_tag "video" %>
-            <%= file_field_tag 'video[file]', accept: 'video/*', :required => true %>
+            <%= file_field_tag 'video[video]', accept: 'video/*', :required => true %>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Post Video</button>
           </div>
       <% end %>
     </div>
