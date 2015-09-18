@@ -2,6 +2,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading">Upload your videos</div>
     <div class="panel-body">
+      <div class="container-fluid">
       <%= form_tag '/uploadvideo', multipart: true, class: 'form-horizontal' do %>
           <%= hidden_field_tag "video[contest_id]", params[:id] %>
           <div class="form-group">
@@ -28,6 +29,7 @@
             <button type="submit" class="btn btn-primary">Post Video</button>
           </div>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

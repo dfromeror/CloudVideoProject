@@ -45,3 +45,5 @@ group :assets do
   gem 'jquery-ui-rails' # jquery ui
 end
 gem 'jw_player_helper'
+gem 'streamio-ffmpeg', '~> 1.0.0'
+gem 'delayed_job_active_record'

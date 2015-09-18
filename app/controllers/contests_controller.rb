@@ -1,4 +1,5 @@
 class ContestsController < ApplicationController
+  include DelayedJob
   def index
     @contests = Contest.order(created_at: :desc).all
   end
@@ -8,7 +9,7 @@ class ContestsController < ApplicationController
     id = params[:id]
     @contest = Contest.find(id)
     #@clients = Client.all
-    @videos = Video.where(contest_id: id)
+    @videos = Video.where(contest_id: id, conversion_date: !nil)
   end
 
   def destroy
@@ -59,8 +60,9 @@ class ContestsController < ApplicationController
     contest = Contest.find(params[:video][:contest_id])
     video_status = VideoStatus.find_by_order(1)
     begin
-      Video.upload(params[:video])
-      flash[:success] = "The video was uploaded and is " + video_status.name
+      video = Video.upload(params[:video])
+      Delayed::Job.enqueue(VideoConvertJob.new(video.id))
+      flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready"
     rescue => ex
       logger.error ex.message
       flash[:error] = ex.message

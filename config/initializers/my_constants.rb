@@ -1,0 +1,1 @@
+VIDEOS_PATH = "/videos/"

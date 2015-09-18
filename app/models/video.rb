@@ -7,6 +7,7 @@ class Video < ActiveRecord::Base
     videoPost = Video.new
     videoPost.original_name = name
     videoPost.original_format = File.extname(name)
+    videoPost.mime_type = MIME::Types.type_for(name).first.content_type
     videoPost.video_status_id = VideoStatus.where(order: 1)[0].id
     videoPost.size = file[:video].size
     videoPost.first_name = file[:first_name]
@@ -16,8 +17,7 @@ class Video < ActiveRecord::Base
     videoPost.contest_id = file[:contest_id]
 
 
-    directory = "/videos/"
-    video_path = File.join(directory, name)
+    video_path = File.join(VIDEOS_PATH, name)
 
     path = File.join("public/", video_path)
 

@@ -3,12 +3,16 @@
     <% if @count % 3 == 0 %><div class="row"><% end %>
     <div class="col-md-4">
       <div class="thumbnail">
-        <%= video_player({:file => video.original_path}, {:id => "video_" + video.id.to_s, :name => "video_" + video.id.to_s}) %>
+        <video width="320" height="240" controls>
+          <source src="<%= video.converted_path %>" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
         <div class="caption">
           <strong><%= video.original_name %></strong>
-          <p>...</p>
           <p><%= "#{video.first_name} #{video.last_name}" %></p>
           <p><%= time_ago_in_words video.created_at %></p>
+          <p><a href="<%= "mailto:#{video.email}" %>"><%= video.email %></a></p>
         </div>
       </div>
     </div>
