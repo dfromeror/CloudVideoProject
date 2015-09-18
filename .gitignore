@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 *.wmv
+*/videos/*
+*.mp4
