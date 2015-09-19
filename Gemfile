@@ -46,4 +46,8 @@ group :assets do
 end
 gem 'jw_player_helper'
 gem 'streamio-ffmpeg', '~> 1.0.0'
+
+#Delayed job => tareas en batch
+gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem 'daemons'

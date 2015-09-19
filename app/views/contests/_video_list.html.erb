@@ -1,5 +1,5 @@
 <% @count = 1 %>
-<% @contest.videos.each do |video| %>
+<% @videos.each do |video| %>
     <% if @count % 3 == 0 %><div class="row"><% end %>
     <div class="col-md-4">
       <div class="thumbnail">
@@ -9,7 +9,7 @@
         </video>
 
         <div class="caption">
-          <strong><%= video.original_name %></strong>
+          <strong><%= video.converted_name %></strong>
           <p><%= "#{video.first_name} #{video.last_name}" %></p>
           <p><%= time_ago_in_words video.created_at %></p>
           <p><a href="<%= "mailto:#{video.email}" %>"><%= video.email %></a></p>

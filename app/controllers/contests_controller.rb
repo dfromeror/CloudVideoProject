@@ -1,5 +1,7 @@
 class ContestsController < ApplicationController
-  include DelayedJob
+
+  require 'video_convert_job'
+
   def index
     @contests = Contest.order(created_at: :desc).all
   end
@@ -9,7 +11,7 @@ class ContestsController < ApplicationController
     id = params[:id]
     @contest = Contest.find(id)
     #@clients = Client.all
-    @videos = Video.where(contest_id: id, conversion_date: !nil)
+    @videos = Video.where(contest_id: id, video_status_id: 2)
   end
 
   def destroy

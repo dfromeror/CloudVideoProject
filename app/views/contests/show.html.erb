@@ -28,6 +28,22 @@
       <div class="col-md-11 col-md-offset-1"><%= @contest.url %></div>
     </div>
   </div>
+  <div>
+    <div class="row">
+      <div class="col-md-2"><h3>Created At</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-md-11 col-md-offset-1"><%= time_ago_in_words @contest.created_at %></div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-12"><h3>Award Description</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-md-11 col-md-offset-1"><%= @contest.award_description %></div>
+    </div>
+  </div>
   <br /><br /><br /><br />
   <%= render "contests/video_list" %>
   <div class="row">

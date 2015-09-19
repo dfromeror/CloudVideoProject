@@ -16,15 +16,21 @@ class Video < ActiveRecord::Base
     videoPost.message = file[:message]
     videoPost.contest_id = file[:contest_id]
 
+    contest = Contest.find(file[:contest_id])
 
-    video_path = File.join(VIDEOS_PATH, name)
+    contest_path = Rails.root.join("public", "videos", contest.name.squish.downcase.tr(" ", "_"))
+    Dir.mkdir(contest_path) unless File.exist?(contest_path)
+    base_name = File.basename(file[:video].original_filename.squish.downcase.tr(" ", "_"))
 
-    path = File.join("public/", video_path)
+    video_path = Rails.root.join("public", "videos", contest.name.squish.downcase.tr(" ", "_"), base_name)
+
+    #path = File.join("public/", video_path)
 
 
-    videoPost.original_path = video_path
+    videoPost.original_path = video_path.to_s[Rails.root.join("public").to_s.size..-1]
 
-    File.open(path, "wb") { |f| f.write(file[:video].read) }
+    File.open(video_path, "wb") { |f| f.write(file[:video].read) }
     videoPost.save
+    return videoPost
   end
 end
