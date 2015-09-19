@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Created</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <% if is_user_logged %>
+        <th colspan="3">Actions</th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% @contests.each do |contest| %>
+      <tr>
+        <td><%= contest.name %></td>
+        <td><%= contest.description %></td>
+        <td><%= time_ago_in_words contest.created_at %></td>
+        <td><%= contest.start_date %></td>
+        <td><%= contest.end_date %></td>
+        <% if is_user_logged %>
+            <td><button type="button" class="btn btn-primary" ng-click="editContest('<%= contest.id %>')"><i class="glyphicon glyphicon-edit"></i></button></td>
+            <td><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></td>
+        <% end %>
+        <td><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-link"></i></button></td>
+        <td><%= link_to 'Show', contest, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to 'Remove', contest, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

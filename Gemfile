@@ -37,3 +37,17 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+gem 'coffee-script-source', '1.8.0'
+gem 'angularjs-rails'
+gem 'angular-ui-bootstrap-rails' #for bootstrap UI
+group :assets do
+  gem 'jquery-ui-rails' # jquery ui
+end
+gem 'jw_player_helper'
+gem 'streamio-ffmpeg', '~> 1.0.0'
+
+#Delayed job => tareas en batch
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'daemons'

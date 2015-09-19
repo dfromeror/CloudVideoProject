@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  resources :video_statuses
+
+  resources :videos
+
+  resources :contests
   resources :users
+  resources :clients
+
 
   #get 'home/index'
 
@@ -8,6 +15,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  post '/login' => 'users#login'
+  get '/mycontests' => 'contests#mycontests'
+  get '/logout' => 'users#logout'
+  post '/uploadvideo' => 'contests#upload_video'
+  get '/convert' => 'videos#convert_videos'
+
+ # get '/contest/new' => 'contest#new'
+  #post '/contest/create' => 'contest#create'
+  #get '/contest/index' => 'contest#index'
+  #get '/contest/me' => 'contest#me'
 
 
   # Example of regular route:

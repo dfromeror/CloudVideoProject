@@ -1,0 +1,2 @@
+class VideoStatusesController < ApplicationController
+end

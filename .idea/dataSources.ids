@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails videos01: development" uuid="18b361f7-5098-4bb9-8b49-daf3b1f35820">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails videos01: test" uuid="4a202848-3ef9-41da-b1a6-f52db4e85b68">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails videos01: production" uuid="727099fe-a4c6-4bec-9f2b-fb37f11fc074">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

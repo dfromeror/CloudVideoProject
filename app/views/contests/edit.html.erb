@@ -1,0 +1,38 @@
+<%= form_for @contest, class: 'form-horizontal' do |c| %>
+    <div class="form-group">
+      <%= c.label :name %>
+      <%= c.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= c.label :description %>
+      <%= c.text_field :description, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= c.label :media %>
+      <%= c.text_field :media, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= c.label :url %>
+      <%= c.text_field :url, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= c.label :start_date %>
+      <%= c.date_select :start_date, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= c.label :end_date %>
+      <%= c.date_select :end_date, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= c.label :award_description %>
+      <%= c.text_area :award_description, class: 'form-control' %>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-10">
+        <div class="form-group">
+          <%= c.submit "Save", :class => 'btn btn-primary col-md-12' %>
+        </div>
+      </div>
+    </div>
+
+<% end %>
