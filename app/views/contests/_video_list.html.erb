@@ -19,3 +19,8 @@
     <% if @count % 3 == 0 %></div><br /><br /><br /><% end %>
     <% @count = @count + 1 %>
 <% end %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 text-center flickr_pagination">
+    <%= will_paginate @videos %>
+  </div>
+</div>

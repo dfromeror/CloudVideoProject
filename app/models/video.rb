@@ -2,19 +2,21 @@ class Video < ActiveRecord::Base
   belongs_to :contest
   has_one :video_status
 
+  self.per_page = 50
+
   def self.upload(file)
     name = file[:video].original_filename
-    videoPost = Video.new
-    videoPost.original_name = name
-    videoPost.original_format = File.extname(name)
-    videoPost.mime_type = MIME::Types.type_for(name).first.content_type
-    videoPost.video_status_id = VideoStatus.where(order: 1)[0].id
-    videoPost.size = file[:video].size
-    videoPost.first_name = file[:first_name]
-    videoPost.last_name = file[:last_name]
-    videoPost.email = file[:email]
-    videoPost.message = file[:message]
-    videoPost.contest_id = file[:contest_id]
+    video_post = Video.new
+    video_post.original_name = name
+    video_post.original_format = File.extname(name)
+    video_post.mime_type = MIME::Types.type_for(name).first.content_type
+    video_post.video_status_id = VideoStatus.where(order: 1)[0].id
+    video_post.size = file[:video].size
+    video_post.first_name = file[:first_name]
+    video_post.last_name = file[:last_name]
+    video_post.email = file[:email]
+    video_post.message = file[:message]
+    video_post.contest_id = file[:contest_id]
 
     contest = Contest.find(file[:contest_id])
 
@@ -27,10 +29,10 @@ class Video < ActiveRecord::Base
     #path = File.join("public/", video_path)
 
 
-    videoPost.original_path = video_path.to_s[Rails.root.join("public").to_s.size..-1]
+    video_post.original_path = video_path.to_s[Rails.root.join("public").to_s.size..-1]
 
     File.open(video_path, "wb") { |f| f.write(file[:video].read) }
-    videoPost.save
-    return videoPost
+    video_post.save
+    return video_post
   end
 end

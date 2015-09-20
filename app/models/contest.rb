@@ -9,4 +9,6 @@ class Contest < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :award_description, presence: true
+
+  self.per_page = 50
 end

@@ -12,6 +12,7 @@
  *= require jquery-ui/jquery-ui
  *= require jquery-ui/themes/dark-hive/theme
  *= require bootstrap/dist/css/bootstrap.min
+ *= require pagination
  *= require_tree .
  *= require_self
 

@@ -51,3 +51,5 @@ gem 'streamio-ffmpeg', '~> 1.0.0'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
+
+gem 'will_paginate', '~> 3.0.7'
