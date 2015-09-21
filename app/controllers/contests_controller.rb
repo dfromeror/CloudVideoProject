@@ -54,7 +54,7 @@ class ContestsController < ApplicationController
   end
 
   def mycontests
-    @contests = Contest.where(:user_id => session[:user_logged_id])
+    @contests = Contest.where(:user_id => session[:user_logged_id]).order(created_at: :desc).page(params[:page])
     render 'contests/index'
   end
 
