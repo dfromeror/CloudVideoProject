@@ -18,3 +18,4 @@
 */videos/*
 *.mp4
 */database.yml
+*.idea*
