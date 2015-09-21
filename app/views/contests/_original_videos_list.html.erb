@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <h3>Uploaded Videos</h3>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Video Name</th>
+        <th>User</th>
+        <th>Uploaded at</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @original_videos.each do |video| %>
+      <tr>
+        <td><%= video.original_name %></td>
+        <td><%= "#{video.first_name} #{video.last_name}" %></td>
+        <td><%= time_ago_in_words video.created_at %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

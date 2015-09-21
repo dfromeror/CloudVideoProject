@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20150918050550) do
 
   create_table "clients", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "email",      null: false
+    t.string   "name"
+    t.string   "email"
     t.string   "layout"
-    t.string   "logo",       null: false
+    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 20150918050550) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "first_name", null: false
+    t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",      null: false
-    t.string   "password",   null: false
+    t.string   "email"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_id"

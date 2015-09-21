@@ -17,3 +17,4 @@
 *.wmv
 */videos/*
 *.mp4
+*/database.yml
