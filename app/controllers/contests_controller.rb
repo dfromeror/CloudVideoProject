@@ -12,7 +12,7 @@ class ContestsController < ApplicationController
     @contest = Contest.find(id)
     #@clients = Client.all
     @videos = Video.where(contest_id: id, video_status_id: 2).order(created_at: :desc).page(params[:page])
-    @original_videos = Video.where(contest_id: id).order(created_at: :desc)
+    @original_videos = Video.where(contest_id: id).order(created_at: :desc).page(params[:page])
   end
 
   def destroy
