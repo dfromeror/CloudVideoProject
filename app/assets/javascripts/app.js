@@ -56,5 +56,5 @@ app.controller('ContestsIndexController', ['$scope', function($scope){
 }]);
 
 app.controller('ContestsShowController', ['$scope', function($scope){
-    $scope.customUrl = location.host + '/contest/' + $('#customUrl').val();
+    $scope.customUrl = location.host + '/contests/' + $('#customUrl').val();
 }]);

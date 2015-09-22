@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/logout' => 'users#logout'
   post '/uploadvideo' => 'contests#upload_video'
   get '/convert' => 'videos#convert_videos'
-  get 'contests/:custom_url' => 'contests#custom_url'
+  get '/contests/:custom_url' => 'contests#custom_url', constraints: { custom_url: /[A-Za-z0-9]+/ }
 
  # get '/contest/new' => 'contest#new'
   #post '/contest/create' => 'contest#create'
