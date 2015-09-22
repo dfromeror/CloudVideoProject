@@ -9,7 +9,7 @@ module ControllerVideoProcessor
     options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libvo_aacenc -ar 11025 -ac 1 -ab 16k"
     #options = "-acodec aac -vcodec libx264 -profile:v high -strict -2"
     contest_folder = Rails.root.join("public", "videos", "#{contest.name.squish.downcase.tr(" ", "_")}")
-    contest_converted_folder = Rails.root.join("public", "videos", "#{contest.name.to_s.underscore}", "converted")
+    contest_converted_folder = Rails.root.join("public", "videos", "#{contest.name.squish.downcase.tr(" ", "_")}", "converted")
     Dir.mkdir(contest_folder) unless File.exist?(contest_folder) #si no existe el folder del concurso se crea
     Dir.mkdir(contest_converted_folder) unless File.exist?(contest_converted_folder) #si no se ha convertido ningun video para el concurso se crea el folder de videos convertidos
     base_name = File.basename(video.original_path, ".*") + ".mp4"
