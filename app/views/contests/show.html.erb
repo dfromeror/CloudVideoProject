@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'swfobject' %>
-<div>
+<div ng-controller="ContestsShowController">
+  <input type="hidden" id="customUrl" name="custom_url" value="<%= @contest.url %>">
   <% if flash[:success] %>
       <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
   <% end %>
@@ -11,6 +12,9 @@
     <div class="col-md-12">
       <h1>Contest <%= @contest.name %></h1>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12"><img src="<%= @contest.media %>" alt="<%= @contest.name %>"></div>
   </div>
   <div>
     <div class="row">
@@ -25,7 +29,7 @@
       <div class="col-md-2"><h3>URL</h3></div>
     </div>
     <div class="row">
-      <div class="col-md-11 col-md-offset-1"><%= @contest.url %></div>
+      <div class="col-md-11 col-md-offset-1">{{ customUrl }}</div>
     </div>
   </div>
   <div>

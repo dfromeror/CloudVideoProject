@@ -21,8 +21,12 @@ app.controller('NavbarController', ['$scope', function($scope){
     }
 }]);
 
-app.controller('NewContestController', ['$scope', function($scope){
+app.controller('NewContestController', ['$scope', '$location', function($scope, $location){
     $scope.contest = {};
+    $scope.baseUrl = location.host;
+    $scope.cleanUrl = function(){
+        $scope.contest.url = !!$scope.contest.url ? $scope.contest.url.split(' ').join(''): '';
+    };
     $('#startDate').datepicker({
         dateFormat: 'yy-mm-dd',
         changeMonths: true,
@@ -45,8 +49,12 @@ app.controller('ContestsIndexController', ['$scope', function($scope){
     }
     $scope.copyLink = function(e, link){
         var input = $('#linkToCopy');
-        input.val(link);
+        input.val(location.host + '/contests/' + link);
         $('#myModal').modal('show');
         input.select();
     }
+}]);
+
+app.controller('ContestsShowController', ['$scope', function($scope){
+    $scope.customUrl = location.host + '/contest/' + $('#customUrl').val();
 }]);

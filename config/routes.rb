@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :videos
 
-  resources :contests
+  resources :contests, constraints: { id: /\d+/}
   resources :users
   resources :clients
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/logout' => 'users#logout'
   post '/uploadvideo' => 'contests#upload_video'
   get '/convert' => 'videos#convert_videos'
+  get 'contests/:custom_url' => 'contests#custom_url'
 
  # get '/contest/new' => 'contest#new'
   #post '/contest/create' => 'contest#create'

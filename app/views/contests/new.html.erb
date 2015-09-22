@@ -17,7 +17,8 @@
         </div>
         <div class="form-group">
           <label for="url">Landing Page URL:</label>
-          <input type="text" class="form-control" id="url" name="contest[url]" ng-model="contest.url" required />
+          <input type="text" class="form-control" id="url" name="contest[url]" ng-model="contest.url" ng-change="cleanUrl()" required /><br />
+          Custom URL: <input type="text" readonly value="{{ baseUrl + '/contests/' + contest.url }}" class="form-control col-md-10" />
         </div>
         <div class="form-group">
           <div class="row">

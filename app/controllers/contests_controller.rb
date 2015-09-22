@@ -12,7 +12,7 @@ class ContestsController < ApplicationController
     @contest = Contest.find(id)
     #@clients = Client.all
     @videos = Video.where(contest_id: id, video_status_id: 2).order(created_at: :desc).page(params[:page])
-    @original_videos = Video.all.order(created_at: :desc)
+    @original_videos = Video.where(contest_id: id).order(created_at: :desc)
   end
 
   def destroy
@@ -71,5 +71,14 @@ class ContestsController < ApplicationController
       flash[:error] = ex.message
     end
     redirect_to contest
+  end
+
+  def custom_url
+    contest = Contest.where(url: params[:custom_url])[0]
+    if contest != nil
+      redirect_to contest
+    else
+      redirect_to root_path
+    end
   end
 end
