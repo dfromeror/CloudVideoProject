@@ -17,7 +17,7 @@
 *.wmv
 */videos/*
 *.mp4
-*/database.yml
+
 *.rbc
 capybara-*.html
 .rspec
@@ -54,7 +54,7 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-.idea/
+.idea*
 **/*~
 .classpath
 .project

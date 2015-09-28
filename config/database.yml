@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: xxx
-  password: xxx
-  host: xxx
+  username: <%= ENV['VIDEOS_DB_USERNAME'] %>
+  password: <%= ENV['VIDEOS_DB_PASSWORD'] %>
+  host: <%= ENV['VIDEOS_DB_ENDPOINT'] %>
 
 development:
   <<: *default
