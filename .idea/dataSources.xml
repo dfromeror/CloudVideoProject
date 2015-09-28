@@ -5,7 +5,7 @@
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://generaldevelop.cxrgaglb1fds.sa-east-1.rds.amazonaws.com/videos01_development</jdbc-url>
+      <jdbc-url>jdbc:mysql://xxx/videos01_development</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
@@ -19,7 +19,7 @@
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://generaldevelop.cxrgaglb1fds.sa-east-1.rds.amazonaws.com/videos01_test</jdbc-url>
+      <jdbc-url>jdbc:mysql://xxx/videos01_test</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
@@ -33,7 +33,7 @@
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://generaldevelop.cxrgaglb1fds.sa-east-1.rds.amazonaws.com/videos01_production</jdbc-url>
+      <jdbc-url>jdbc:mysql://xxx/videos01_production</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

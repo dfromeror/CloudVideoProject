@@ -60,17 +60,32 @@ class ContestsController < ApplicationController
   end
 
   def upload_video
-    contest = Contest.find(params[:video][:contest_id])
-    video_status = VideoStatus.find_by_order(1)
     begin
-      video = Video.upload(params[:video])
-      Delayed::Job.enqueue(VideoConvertJob.new(video.id))
-      flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready"
+      contest = Contest.find(params[:video][:contest_id])
+      video_status = VideoStatus.find_by_order(1)
+      video = Video.create(video_params)
+      video.video_status_id = video_status.id
+      video.save
+      flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready to watch"
     rescue => ex
       logger.error ex.message
       flash[:error] = ex.message
     end
+    # begin
+    #   video = Video.upload(params[:video])
+    #   Delayed::Job.enqueue(VideoConvertJob.new(video.id))
+    #   flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready"
+    # rescue => ex
+    #   logger.error ex.message
+    #   flash[:error] = ex.message
+    # end
     redirect_to contest
+  end
+
+  private
+
+  def video_params
+    params.require(:video).permit(:first_name, :last_name, :email, :message, :video)
   end
 
   def custom_url

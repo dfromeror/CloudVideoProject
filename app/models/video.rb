@@ -2,7 +2,14 @@ class Video < ActiveRecord::Base
   belongs_to :contest
   has_one :video_status
 
+  require 'aws-sdk-v1'
+  require 'aws-sdk'
+
   self.per_page = 50
+
+  has_attached_file :video,
+                    :url => "/videos/:id/:filename"
+  validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
 
   def self.upload(file)
     name = file[:video].original_filename
