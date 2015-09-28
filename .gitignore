@@ -17,7 +17,7 @@
 *.wmv
 */videos/*
 *.mp4
-
+*/database.yml
 *.rbc
 capybara-*.html
 .rspec
