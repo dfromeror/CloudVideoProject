@@ -65,6 +65,7 @@ class ContestsController < ApplicationController
       video_status = VideoStatus.find_by_order(1)
       video = Video.create(video_params)
       video.video_status_id = video_status.id
+      video.contest_id = contest.id
       video.save
       flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready to watch"
     rescue => ex

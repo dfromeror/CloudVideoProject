@@ -9,14 +9,16 @@
         <th>Video Name</th>
         <th>User</th>
         <th>Uploaded at</th>
+        <th>URL</th>
       </tr>
       </thead>
       <tbody>
       <% @original_videos.each do |video| %>
       <tr>
-        <td><%= video.original_name %></td>
+        <td><%= video.video_file_name %></td>
         <td><%= "#{video.first_name} #{video.last_name}" %></td>
         <td><%= time_ago_in_words video.created_at %></td>
+        <td><%= video.inspect %></td>
       </tr>
       <% end %>
       </tbody>
