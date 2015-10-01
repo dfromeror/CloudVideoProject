@@ -18,7 +18,7 @@
         <td><%= video.video_file_name %></td>
         <td><%= "#{video.first_name} #{video.last_name}" %></td>
         <td><%= time_ago_in_words video.created_at %></td>
-        <td><%= video.inspect %></td>
+        <td><%= video.video.url %></td>
       </tr>
       <% end %>
       </tbody>
