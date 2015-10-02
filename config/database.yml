@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: videos01_production
-  username: videos01
-  password: <%= ENV['VIDEOS01_DATABASE_PASSWORD'] %>
+  username: <%= ENV['VIDEOS_DB_USERNAME'] %>
+  password: <%= ENV['VIDEOS_DB_PASSWORD'] %>
+  host: <%= ENV['VIDEOS_DB_ENDPOINT'] %>

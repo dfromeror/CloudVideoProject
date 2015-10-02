@@ -9,6 +9,10 @@ class Video < ActiveRecord::Base
 
   has_attached_file :video,
                     :url => "/videos/:id/:filename"
+
+  has_attached_file :video_converted,
+                    :url => "/videos/:id/converted/:filename"
+
   validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
 
   def self.upload(file)
