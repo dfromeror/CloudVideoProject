@@ -16,22 +16,27 @@ class ContestsController < ApplicationController
   end
 
   def destroy
+    id = params[:id]
 
+    begin
+      Contest.destroy(id)
+      flash[:success] = "The contests was deleted"
+    rescue => ex
+      logger.error ex.message
+      flash[:error] = "An error has occur trying to delete the contest [#{ex.message}]"
+    end
+    redirect_to '/mycontests'
   end
 
   def update
-    contest = Contest.find(params[:id])
-    contest.update(name: contest_parameters[:name], description: contest_parameters[:description], media: contest_parameters[:media], url: contest_parameters[:url], start_date: contest_parameters[:start_date], end_date: contest_parameters[:end_date], award_description: contest_parameters[:award_description])
-=begin
-    contest.name = contest_parameters[:name]
-    contest.description = contest_parameters[:description]
-    contest.media = contest_parameters[:media]
-    contest.url = contest_parameters[:url]
-    contest.start_date = contest_parameters[:start_date]
-    contest.end_date = contest_parameters[:end_date]
-    contest.award_description = contest_parameters[:award_description]
-    contest.save
-=end
+    begin
+      contest = Contest.find(params[:id])
+      contest.update(contest_parameters)
+      flash[:success] = "The contest was updated successfully"
+    rescue => ex
+      logger.error ex.message
+      flash[:error] = "An error has occur trying to update the contest"
+    end
 
     redirect_to "/mycontests"
   end
@@ -85,9 +90,10 @@ class ContestsController < ApplicationController
 
   private
 
-  def video_params
-    params.require(:video).permit(:first_name, :last_name, :email, :message, :video)
-  end
+    def video_params
+      params.require(:video).permit(:first_name, :last_name, :email, :message, :video)
+    end
+
 
   def custom_url
     contest = Contest.where(url: params[:custom_url])[0]

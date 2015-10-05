@@ -1,5 +1,11 @@
 <div ng-controller="ContestsIndexController">
 <h1>Available Contests</h1>
+  <% if flash[:error] %>
+     <div class="alert alert-danger"><%= flash[:error] %></div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="alert alert-success"><%= flash[:success] %></div>
+  <% end %>
 <table class="table">
   <thead>
   <tr>
