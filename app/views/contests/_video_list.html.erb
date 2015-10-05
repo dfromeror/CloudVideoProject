@@ -4,12 +4,12 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <video width="320" height="240" controls>
-          <source src="<%= video.converted_path %>" type="video/mp4">
+          <source src="<%= video.video_converted.url %>" type="<%= video.video_converted_content_type %>">
           Your browser does not support the video tag.
         </video>
 
         <div class="caption">
-          <strong><%= video.converted_name %></strong>
+          <strong><%= video.video_file_name %></strong>
           <p><%= "#{video.first_name} #{video.last_name}" %></p>
           <p><%= time_ago_in_words video.created_at %></p>
           <p><a href="<%= "mailto:#{video.email}" %>"><%= video.email %></a></p>

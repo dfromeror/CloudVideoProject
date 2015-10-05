@@ -1,31 +1,40 @@
 require 'rubygems'
 require 'streamio-ffmpeg'
 require 'securerandom'
+require 'fileutils'
 
 module ControllerVideoProcessor
   def convert_to_mp4 video
-    contest = Contest.find(video.contest_id)
-    movie = FFMPEG::Movie.new("public#{video.original_path}")
-    options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libvo_aacenc -ar 11025 -ac 1 -ab 16k"
-    #options = "-acodec aac -vcodec libx264 -profile:v high -strict -2"
-    contest_folder = Rails.root.join("public", "videos", "#{contest.name.squish.downcase.tr(" ", "_")}")
-    contest_converted_folder = Rails.root.join("public", "videos", "#{contest.name.squish.downcase.tr(" ", "_")}", "converted")
-    Dir.mkdir(contest_folder) unless File.exist?(contest_folder) #si no existe el folder del concurso se crea
-    Dir.mkdir(contest_converted_folder) unless File.exist?(contest_converted_folder) #si no se ha convertido ningun video para el concurso se crea el folder de videos convertidos
-    base_name = File.basename(video.original_path, ".*") + ".mp4"
-    converted_path = Rails.root.join("public", "videos", "#{contest.name.squish.downcase.tr(" ", "_")}", "converted", base_name)
-    #converted_video = movie.transcode(base_name, options)
-    movie.transcode(converted_path, options)
-    # File.open(converted_path, 'w+') do |f|
-    #   f.write(converted_video)
-    # end
 
-    #Actualizar datos de converion del video
-    video.converted_path = converted_path.to_s[Rails.root.join("public").to_s.size..-1]
-    video.converted_name = base_name
-    video.conversion_date = Date.current
+
+    #creating a temporal folder
+    local_video_path = Rails.root.join("public", "tmp", "#{video.class.to_s.underscore}", "#{video.id}")
+    FileUtils.mkdir_p local_video_path unless File.exist?(local_video_path)
+    #getting video name
+    file_name = File.basename(video.video.url(:default, timestamp: false))
+    #downloading the file locally
+    full_path_file = Rails.root.join(local_video_path, file_name)
+    open(full_path_file, 'wb') do |file|
+      file << open(video.video.url(:default, timestamp: false)).read
+    end
+
+    movie = FFMPEG::Movie.new(full_path_file)
+    options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libvo_aacenc -ar 11025 -ac 1 -ab 16k"
+    new_video_file_path = Rails.root.join("public", "tmp", "#{video.class.to_s.underscore}", "#{video.id}")
+    new_video_file_name = File.basename(video.video.url, ".*") + ".mp4"
+    full_new_video_file_name = Rails.root.join(new_video_file_path, new_video_file_name)
+    movie.transcode(full_new_video_file_name, options)
+    attach_name = "video_converted"
+    attach = Paperclip::Attachment.new(attach_name, video, video.class.attachment_definitions[attach_name.to_sym])
+    file = File.open(full_new_video_file_name)
+    attach.assign file
+    attach.save
+    file.close
     video.video_status_id = 2
     video.save
+
+    FileUtils.rm_rf(full_path_file)
+    FileUtils.rm_rf(full_new_video_file_name)
 
     video
   end

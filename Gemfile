@@ -53,3 +53,6 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 gem 'will_paginate', '~> 3.0.7'
+gem 'paperclip', '~> 4.3.1'
+gem 'aws-sdk-v1'
+gem 'aws-sdk', '~> 2.1.23'
