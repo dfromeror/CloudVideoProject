@@ -34,11 +34,19 @@ GEM
       aws-sdk-resources (= 2.1.23)
     aws-sdk-core (2.1.23)
       jmespath (~> 1.0)
+    aws-sdk-rails (1.0.0)
+      aws-sdk-resources (~> 2)
+      rails (>= 3)
     aws-sdk-resources (2.1.23)
       aws-sdk-core (= 2.1.23)
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    aws-ses (0.4.4)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -141,6 +149,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     will_paginate (3.0.7)
+    xml-simple (1.1.5)
 
 PLATFORMS
   x86-mingw32
@@ -149,7 +158,9 @@ DEPENDENCIES
   angular-ui-bootstrap-rails
   angularjs-rails
   aws-sdk (~> 2.1.23)
+  aws-sdk-rails (~> 1.0)
   aws-sdk-v1
+  aws-ses (~> 0.4.4)
   coffee-rails (~> 4.0.0)
   coffee-script-source (= 1.8.0)
   daemons

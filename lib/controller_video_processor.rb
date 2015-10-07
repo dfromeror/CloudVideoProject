@@ -36,6 +36,8 @@ module ControllerVideoProcessor
     FileUtils.rm_rf(full_path_file)
     FileUtils.rm_rf(full_new_video_file_name)
 
+    VideoMailer.video_ready_email(video).deliver
+
     video
   end
 end
