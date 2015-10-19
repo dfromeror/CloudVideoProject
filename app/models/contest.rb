@@ -1,14 +1,17 @@
-class Contest < ActiveRecord::Base
+class Contest
+
+  dynamo_schema  do
+    attribute :name
+    attribute :description
+    attribute :media
+    attribute :url
+    attribute :start_date, :datetime
+    attribute :end_date, :datetime
+    attribute :award_description, :datetime
+  end
+
   belongs_to :user
   has_many :videos
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :media, presence: true
-  validates :url, presence: true
-  validates :url, uniqueness: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :award_description, presence: true
 
   self.per_page = 50
 end

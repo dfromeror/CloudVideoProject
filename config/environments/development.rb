@@ -49,5 +49,6 @@ Rails.application.configure do
   }
 
   config.action_mailer.delivery_method = :ses
+  config.action_controller.asset_host = 'd2zu1s4np0tvfi.cloudfront.net'
 
 end

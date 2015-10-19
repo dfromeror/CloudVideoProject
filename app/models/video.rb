@@ -1,9 +1,34 @@
-class Video < ActiveRecord::Base
+class Video
+
+  dynamo_schema do
+    attribute :converted_name
+    attribute :converted_path
+    attribute :first_name
+    attribute :last_name
+    attribute :email
+    attribute :message
+    attribute :size, :decimal
+    attribute :conversion_date, :datetime
+    attribute :contest_id, :integer
+    attribute :video_status_id, :integer
+    attribute :mime_type
+    attribute :video_file_name
+    attribute :video_content_type
+    attribute :video_file_size, :integer
+    attribute :video_updated_at, :datetime
+    attribute :video_converted_file_name
+    attribute :video_converted_content_type
+    attribute :video_converted_file_size, :integer
+    attribute :video_converted_updated_at, :datetime
+  end
+
   belongs_to :contest
   has_one :video_status
 
   require 'aws-sdk-v1'
   require 'aws-sdk'
+
+
 
   self.per_page = 50
 
