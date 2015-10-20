@@ -3,7 +3,9 @@ class UsersController < ApplicationController
 		
 		client = Client.find(params[:user][:client_id])
 
-		client.users.create(user_parameters)
+		user = params[:user]
+		user.merge!(:client_id => client.attributes['id'])
+		User.save(user)
 
 		redirect_to root_path
 	end
