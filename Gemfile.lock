@@ -65,6 +65,10 @@ GEM
     delayed_job_active_record (4.0.3)
       activerecord (>= 3.0, < 5.0)
       delayed_job (>= 3.0, < 4.1)
+    dynamoid (0.7.1)
+      activemodel
+      aws-sdk
+      tzinfo
     erubis (2.7.0)
     execjs (2.6.0)
     hike (1.2.3)
@@ -166,6 +170,7 @@ DEPENDENCIES
   daemons
   delayed_job
   delayed_job_active_record
+  dynamoid (~> 0.7.1)
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
