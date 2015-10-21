@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	def index
-		@clients = Client.order(name: :asc).all
+		#@clients = Client.all
 	end
 	def register
 		

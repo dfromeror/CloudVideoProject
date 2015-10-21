@@ -1,11 +1,34 @@
-class Video < ActiveRecord::Base
+class Video
+  include Dynamoid::Document
+  table :name => :videos, :key => :id, :read_capacity => 1, :write_capacity => 1
+
   belongs_to :contest
   has_one :video_status
+
+  field :converted_name
+  field :converted_path
+  field :first_name
+  field :last_name
+  field :email
+  field :message
+  field :size
+  field :conversion_date, :datetime
+  field :contest_id, :integer
+  field :video_status_id, :integer
+  field :mime_type
+  field :video_file_name
+  field :video_content_type
+  field :video_file_size, :integer
+  field :video_updated_at, :datetime
+  field :video_converted_file_name
+  field :video_converted_content_type
+  field :video_converted_file_size, :integer
+  field :video_converted_updated_at
 
   require 'aws-sdk-v1'
   require 'aws-sdk'
 
-  self.per_page = 50
+  #self.per_page = 50
 
   has_attached_file :video,
                     :url => "/videos/:id/:filename"
