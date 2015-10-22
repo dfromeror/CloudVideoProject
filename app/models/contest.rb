@@ -1,14 +1,19 @@
-class Contest < ActiveRecord::Base
+class Contest
+  include Dynamoid::Document
+  table :name => :contests, :key => :id, :read_capacity => 1, :write_capacity => 1
+
   belongs_to :user
   has_many :videos
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :media, presence: true
-  validates :url, presence: true
-  validates :url, uniqueness: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :award_description, presence: true
 
-  self.per_page = 50
+  field :user_id
+  field :name
+  field :description
+  field :media
+  field :url
+  field :start_date, :datetime
+  field :end_date, :datetime
+  field :award_description
+
+
+  #self.per_page = 50
 end

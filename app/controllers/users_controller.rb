@@ -1,19 +1,17 @@
 class UsersController < ApplicationController
 	def create
 		
-		client = Client.find(params[:user][:client_id])
-
-		client.users.create(user_parameters)
+		User.create(user_parameters)
 
 		redirect_to root_path
 	end
 
 	def login
-		users = User.where(:client_id => login_parameters[:client_id], :email => login_parameters[:email], :password => login_parameters[:password])
+		users = User.where(:email => login_parameters[:email], :password => login_parameters[:password]).all
 		if users.count == 1
 			session[:user_logged_email] = users[0].email
 			session[:user_logged_id] = users[0].id
-			session[:user_logged_name] = users[0].first_name + ' ' + users[0].last_name
+			session[:user_logged_name] = "#{users[0].first_name} #{users[0].last_name}"
       session[:is_user_logged] = true
       session[:error_message] = nil
 		else
