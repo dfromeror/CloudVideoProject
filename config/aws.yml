@@ -1,27 +1,10 @@
-fake_dynamo: &local
-  region:             <%= ENV['AWS_REGION'] %>
-  endpoint:           dynamodb.us-east-1.amazonaws.com
-  access_key_id:      <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  secret_access_key:  <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  development: &development
+    access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+    secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+    dynamo_db_endpoint:  dynamodb.us-east-1.amazonaws.com
 
-amazon: &amazon
-  region:             <%= ENV['AWS_REGION'] %>
-  access_key_id:      <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  secret_access_key:  <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  test:
+    <<: *development
 
-
-#
-# It is safe to set any of the following three environments to
-# *amazon, as table names will be suffixed according to the
-# environment (CHEF_ENV and Rails.env). See Api.basename_suffix.
-# You can use *amazon instead of *local if you wish.
-#
-
-development:
-  <<: *local
-
-test:
-  <<: *local
-
-production:
-  <<: *amazon
+  production:
+    <<: *development

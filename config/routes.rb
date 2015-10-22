@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :videos
 
-  resources :contests, constraints: { id: /\d+/}
+  resources :contests
   resources :users
   resources :clients
 

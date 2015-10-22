@@ -1,17 +1,19 @@
 class Contest
-
-  dynamo_schema  do
-    attribute :name
-    attribute :description
-    attribute :media
-    attribute :url
-    attribute :start_date, :datetime
-    attribute :end_date, :datetime
-    attribute :award_description, :datetime
-  end
+  include Dynamoid::Document
+  table :name => :contests, :key => :id, :read_capacity => 1, :write_capacity => 1
 
   belongs_to :user
   has_many :videos
 
-  self.per_page = 50
+  field :user_id
+  field :name
+  field :description
+  field :media
+  field :url
+  field :start_date, :datetime
+  field :end_date, :datetime
+  field :award_description
+
+
+  #self.per_page = 50
 end

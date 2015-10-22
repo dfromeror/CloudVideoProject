@@ -1,20 +1,10 @@
 class Client
-  require 'securerandom'
+	include Dynamoid::Document
+  table :name => :clients, :key => :id, :read_capacity => 1, :write_capacity => 1
 
-  dynamo_db = AWS::DynamoDB.new
-  @@table = dynamo_db.tables[self.name.pluralize.downcase].load_schema
-
-  def self.save(item)
-    item.merge!(:id => SecureRandom.uuid)
-    @@table.items.put(item)
-  end
-
-  def self.all
-    @items = @@table.items.select
-  end
-
-  def self.find(id)
-    @item = @@table.items.where(id: id)
-  end
+	field :name
+	field :email
+	field :layout
+	field :logo
 
 end
