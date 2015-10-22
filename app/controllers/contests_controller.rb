@@ -67,6 +67,7 @@ class ContestsController < ApplicationController
   end
 
   def upload_video
+    contest = Contest.find(params[:video][:contest_id])
     begin
       Video.upload(video_params)
       flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready to watch"
