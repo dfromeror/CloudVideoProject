@@ -11,7 +11,7 @@ class ContestsController < ApplicationController
     id = params[:id]
     @contest = Contest.find(id)
     #@clients = Client.all
-    @videos = Video.where(contest_id: id, video_status_id: 2).order(created_at: :desc).all
+    @videos = Video.where(contest_id: id, video_status_id: 2).all
     @original_videos = Video.where(contest_id: id).all
   end
 
@@ -68,32 +68,19 @@ class ContestsController < ApplicationController
 
   def upload_video
     begin
-      contest = Contest.find(params[:video][:contest_id])
-      video_status = VideoStatus.find_by_order(1)
-      video = Video.create(video_params)
-      video.video_status_id = video_status.id
-      video.contest_id = contest.id
-      video.save
+      Video.upload(video_params)
       flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready to watch"
     rescue => ex
       logger.error ex.message
       flash[:error] = ex.message
     end
-    # begin
-    #   video = Video.upload(params[:video])
-    #   Delayed::Job.enqueue(VideoConvertJob.new(video.id))
-    #   flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready"
-    # rescue => ex
-    #   logger.error ex.message
-    #   flash[:error] = ex.message
-    # end
     redirect_to contest
   end
 
   private
 
     def video_params
-      params.require(:video).permit(:first_name, :last_name, :email, :message, :video)
+      params.require(:video).permit(:contest_id, :first_name, :last_name, :email, :message, :video)
     end
 
 

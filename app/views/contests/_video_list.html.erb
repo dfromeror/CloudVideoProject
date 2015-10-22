@@ -4,12 +4,12 @@
     <div class="col-md-4">
       <div class="thumbnail">
         <video width="320" height="240" controls>
-          <source src="<%= video.video_converted.url %>" type="<%= video.video_converted_content_type %>">
+          <source src="<%= video.converted_file_path %>" type="<%= video.converted_content_type %>">
           Your browser does not support the video tag.
         </video>
 
         <div class="caption">
-          <strong><%= video.video_file_name %></strong>
+          <strong><%= video.original_file_name %></strong>
           <p><%= "#{video.first_name} #{video.last_name}" %></p>
           <p><%= time_ago_in_words video.created_at %></p>
           <p><a href="<%= "mailto:#{video.email}" %>"><%= video.email %></a></p>
@@ -19,8 +19,3 @@
     <% if @count % 3 == 0 %></div><br /><br /><br /><% end %>
     <% @count = @count + 1 %>
 <% end %>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 text-center flickr_pagination">
-    <%= will_paginate @videos %>
-  </div>
-</div>
