@@ -18,11 +18,13 @@ class Video
   field :original_file_format
   field :original_content_type
   field :original_file_size, :integer
+  field :original_key
   field :converted_file_name
   field :converted_file_path
   field :converted_content_type
   field :converted_file_size, :integer
   field :converted_updated_at
+  field :converted_key
 
   require 'aws-sdk-v1'
   require 'aws-sdk'
@@ -38,13 +40,11 @@ class Video
   # validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
 
   def self.upload(file)
-    #configuración del registro video
-    #contest = Contest.find(file[:contest_id])
     contest_id = file[:contest_id]
     video_status = VideoStatus.where(:order => 1).all[0]
 
     name = file[:video].original_filename
-    video_post = Video.create
+    video_post = Video.new
     video_post.original_file_name = name
     video_post.original_file_format = File.extname(name)
     video_post.original_content_type = MIME::Types.type_for(name).first.content_type
@@ -56,19 +56,19 @@ class Video
     video_post.email = file[:email]
     video_post.message = file[:message]
     video_post.contest_id = contest_id
-    #service = AWS::S3.new(:access_key_id      => ENV['AWS_ACCESS_KEY_ID'],
-    #                      :secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'])
-    service = AWS::S3.new
 
-    bucket_name = ENV['AWS_S3_BUCKET_NAME']
-    bucket = service.buckets[bucket_name]
-    bucket.acl = :public_read
     key = File.join("original", "#{contest_id}", "#{DateTime.now.to_i}", "#{name}")
-    s3_file = bucket.objects[key].write(:file => file[:video])
-    s3_file.acl = :public_read
-    #s3_file = S3Service.put(key, file[:video])
+    #Subir archivo a S3
+    s3_file = S3Service.put(key, file[:video])
+
+    #Actualizar los datos del video en base de datos
     video_post.original_file_path = s3_file.public_url.to_s
+    video_post.original_key = key
     video_post.save
+
+    #Encolar el transcode del video
+    SqsService.send(video_post.id)
+
     return video_post
   end
 end
