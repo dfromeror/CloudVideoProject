@@ -51,4 +51,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :ses
   config.action_controller.asset_host = 'd2zu1s4np0tvfi.cloudfront.net'
 
+  ec_endpoint = "srgvideocontests.7x1unj.0001.use1.cache.amazonaws.com"
+  elasticache = Dalli::ElastiCache.new(ec_endpoint)
+  config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
+
 end
