@@ -6,5 +6,4 @@ class User
   field :last_name
   field :email
   field :password
-  field :client_id, :integer
 end

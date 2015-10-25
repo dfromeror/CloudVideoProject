@@ -10,8 +10,9 @@ class ContestsController < ApplicationController
     #include_all_helpers
     id = params[:id]
     @contest = Contest.find(id)
+    video_status = VideoStatus.where(:order => 2).all[0]
     #@clients = Client.all
-    @videos = Video.where(contest_id: id, video_status_id: 2).all
+    @videos = Video.where(contest_id: id, video_status_id: video_status.id).all
     @original_videos = Video.where(contest_id: id).all
   end
 
@@ -67,9 +68,11 @@ class ContestsController < ApplicationController
   end
 
   def upload_video
+    contest = Contest.find(params[:video][:contest_id])
+
     begin
-      Video.upload(video_params)
-      flash[:success] = "The video was uploaded and is " + video_status.name + " we'll contact you as soon as the video is ready to watch"
+      new_video = Video.upload(video_params)
+      flash[:success] = "The video was uploaded, we'll contact you as soon as the video is ready to watch"
     rescue => ex
       logger.error ex.message
       flash[:error] = ex.message

@@ -3,6 +3,6 @@ class VideoMailer < ActionMailer::Base
 
   def video_ready_email(video)
     @video = video
-    mail(to: @video.email, subject: "Hi! your video #{video.video_file_name} is ready to watch")
+    mail(to: @video.email, subject: "Hi! your video #{video.original_file_name} is ready to watch")
   end
 end

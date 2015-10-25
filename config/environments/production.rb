@@ -86,4 +86,6 @@ Rails.application.configure do
           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
       }
   }
+  #Configuración de assets desde cloudfront
+  config.action_controller.asset_host = ENV['CLOUDFRONT_ENDPOINT']
 end
