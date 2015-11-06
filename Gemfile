@@ -51,7 +51,6 @@ group :development, :test do
 end
 
 gem 'jw_player_helper'
-gem 'streamio-ffmpeg', '~> 1.0.0'
 
 #Delayed job => tareas en batch
 gem 'delayed_job'
@@ -62,3 +61,4 @@ gem 'will_paginate', '~> 3.0.7'
 gem 'paperclip', '~> 4.3.1'
 gem 'aws-sdk-v1'
 gem 'aws-sdk', '~> 2.1.23'
+gem 'zencoder'
