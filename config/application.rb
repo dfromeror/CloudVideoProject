@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 #require 'delayed_job_active_record'
-require 'rails/all'
+#require 'rails/all'
 
 #require 'active_job'
 
