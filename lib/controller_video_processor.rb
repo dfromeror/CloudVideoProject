@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'streamio-ffmpeg'
 require 'securerandom'
 require 'fileutils'
 require 'pathname'
@@ -16,14 +15,18 @@ module ControllerVideoProcessor
     #downloading the file locally
     full_path_file = Rails.root.join(local_video_path, file_name)
 
-    S3Service.download(video.original_key, full_path_file)
+    S3Service.download(video.original_key, full_path_file)    
 
-    movie = FFMPEG::Movie.new(full_path_file)
-    options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libvo_aacenc -ar 11025 -ac 1 -ab 16k"
+    #movie = FFMPEG::Movie.new(full_path_file)
+    #options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libvo_aacenc -ar 11025 -ac 1 -ab 16k"
     new_video_file_path = Rails.root.join("public", "tmp", "#{video.class.to_s.underscore}", "#{video.id}")
     new_video_file_name = File.basename(video.original_file_name, ".*") + ".mp4"
     full_new_video_file_name = Rails.root.join(new_video_file_path, new_video_file_name)
-    movie.transcode(full_new_video_file_name, options)
+    #movie.transcode(full_new_video_file_name, options)
+
+    zencoder_response = Zencoder::Job.create({:input => full_path_file,
+                      :outputs => [{:label => 'vp8 for the web',
+                                    :url => full_new_video_file_name}]})
 
     key = File.join("converted", "#{video.contest_id}", "#{DateTime.now.to_i}", "#{new_video_file_name}")
 
