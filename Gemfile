@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
-# Use mysql as the database for Active Record
-gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -44,8 +42,16 @@ gem 'angular-ui-bootstrap-rails' #for bootstrap UI
 group :assets do
   gem 'jquery-ui-rails' # jquery ui
 end
+
+group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
+gem 'pg'
+
 gem 'jw_player_helper'
-gem 'streamio-ffmpeg', '~> 1.0.0'
+#gem 'streamio-ffmpeg', '~> 1.0.0'
 
 #Delayed job => tareas en batch
 gem 'delayed_job'
@@ -61,3 +67,4 @@ gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 gem 'dynamoid', '~> 0.7.1'
 gem 'fog', '~> 1.35'
 gem 'dalli', '~> 2.7', '>= 2.7.4'
+gem 'zencoder'
