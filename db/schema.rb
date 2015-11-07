@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20151002021355) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20151002021355) do
     t.string   "last_name"
     t.string   "email"
     t.text     "message"
-    t.decimal  "size",                         precision: 10, scale: 0
+    t.decimal  "size"
     t.datetime "conversion_date"
     t.datetime "created_at"
     t.datetime "updated_at"
