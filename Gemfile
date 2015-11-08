@@ -3,8 +3,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
+<<<<<<< HEAD
 # Use postgres as the database for Active Record
 gem 'pg'
+=======
+>>>>>>> feature/Entrega_2
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -22,6 +25,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -50,8 +55,13 @@ gem 'angular-ui-bootstrap-rails' #for bootstrap UI
 group :assets do
   gem 'jquery-ui-rails' # jquery ui
 end
+
+group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
 gem 'jw_player_helper'
-gem 'streamio-ffmpeg', '~> 1.0.0'
 
 #Delayed job => tareas en batch
 gem 'delayed_job'
@@ -65,5 +75,6 @@ gem 'aws-sdk', '~> 2.1.23'
 gem 'aws-sdk-rails', '~> 1.0'
 gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 gem 'zencoder'
+
 
 
