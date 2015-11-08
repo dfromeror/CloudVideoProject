@@ -48,7 +48,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'pg'
+gem 'mysql2'
 
 gem 'jw_player_helper'
 #gem 'streamio-ffmpeg', '~> 1.0.0'

@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'streamio-ffmpeg'
 require 'securerandom'
 require 'fileutils'
 
